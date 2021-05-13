@@ -6,65 +6,36 @@ const { Consumer, Provider } = React.createContext();
 class AuthProvider extends React.Component {
   state = {
     isLoggedIn: false,
-    isLoading: true,
+    isLoading: false,
     user: null,
   };
 
   authService = new AuthService();
 
-  async componentDidMount() {
-    try {
-      const result = await this.authService.isLoggedIn();
-      if (result) {
-        console.log(result);
+  componentDidMount = () => {
+    this.authService
+      .loggedin()
+      .then((response) =>
         this.setState({
           isLoggedIn: true,
+          user: response.data,
           isLoading: false,
-          user: result.data,
-        });
-      }
-    } catch (err) {
-      this.setState({ isLoggedIn: false, isLoading: false, user: null });
-    }
-
-    // .then((response) => {
-    //   this.setState({ isLoggedIn: true, isLoading: false, user:response.data });
-    // })
-    // .catch(() => {
-    //   this.setState({ isLoggedIn: false, isLoading: false, user: null });
-    // })
-  }
-
-  // data serán los campos rellados del formulario de Signup
-  signup = async (data) => {
-    try {
-      const response = await this.authService.signup(data);
-      if (response) {
-        this.setState({ isLoggedIn: true, user: response.data });
-      }
-    } catch (err) {
-      this.setState({ isLoggedIn: false, user: null });
-    }
-
-    // .then(response => this.setState({ isLoggedIn: true, user: response.data }))
-    // .catch(() => this.setState({ isLoggedIn: false, user: null }))
+        })
+      )
+      .catch((err) =>
+        this.setState({ isLoggedIn: false, user: null, isLoading: false })
+      );
   };
 
-  // async signup(data){
-  //   try {
-  //     const response = await this.authService.signup(data);
-  //     if(response){
-  //       this.setState({ isLoggedIn: true, user: response.data })
-  //     }
-  //   } catch(err){
-  //     this.setState({ isLoggedIn: false, user: null })
-  //   }
+  signup = (data) => {
+    this.authService
+      .signup(data)
+      .then((response) =>
+        this.setState({ isLoggedIn: true, user: response.data })
+      )
+      .catch((err) => this.setState({ isLoggedIn: false, user: null }));
+  };
 
-  //   // .then(response => this.setState({ isLoggedIn: true, user: response.data }))
-  //   // .catch(() => this.setState({ isLoggedIn: false, user: null }))
-  // }
-
-  // data serán los campos rellados del formulario de Login
   login = (data) => {
     this.authService
       .login(data)
@@ -88,7 +59,14 @@ class AuthProvider extends React.Component {
       .catch((error) => console.error(error));
   };
 
-  render() {
+  delete = () => {
+    this.authService
+      .delete()
+      .then(() => this.setState({ isLoggedIn: false, user: null }))
+      .catch((error) => console.error(error));
+  };
+
+  render = () => {
     const { isLoggedIn, isLoading, user } = this.state;
 
     if (isLoading) return <p>Loading...</p>;
@@ -103,23 +81,22 @@ class AuthProvider extends React.Component {
           login: this.login,
           logout: this.logout,
           edit: this.edit,
+          remove: this.delete,
         }}>
         {this.props.children}
       </Provider>
     );
-  }
+  };
 }
 
-// HOC - High Order Component that converts regular component into Consumer
 const withAuth = (WrappedComponent) => {
-  return function (props) {
+  return function(props){
     return (
       <Consumer>
-        {(value) => {
-          const { isLoading, isLoggedIn, user, signup, login, logout, edit } =
+        {value => {
+          const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove } =
             value;
 
-          // Pasamos las props propias del contexto y además las props que ya recibiera el componente previamente via {...props}
           return (
             <WrappedComponent
               isLoggedIn={isLoggedIn}
@@ -129,6 +106,7 @@ const withAuth = (WrappedComponent) => {
               login={login}
               logout={logout}
               edit={edit}
+              delete={remove}
               {...props}
             />
           );

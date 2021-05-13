@@ -81,7 +81,7 @@ class AuthProvider extends React.Component {
           login: this.login,
           logout: this.logout,
           edit: this.edit,
-          delete: this.delete,
+          remove: this.delete,
         }}>
         {this.props.children}
       </Provider>
@@ -94,7 +94,7 @@ const withAuth = (WrappedComponent) => {
     return (
       <Consumer>
         {(value) => {
-          const { isLoading, isLoggedIn, user, signup, login, logout, edit, delete } =
+          const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove } =
             value;
 
           return (
@@ -106,7 +106,7 @@ const withAuth = (WrappedComponent) => {
               login={login}
               logout={logout}
               edit={edit}
-              delete={delete}
+              delete={remove}
               {...props}
             />
           );

@@ -13,7 +13,7 @@ class AuthProvider extends React.Component {
   authService = new AuthService();
 
   componentDidMount = () => {
-    authService
+    this.authService
       .loggedin()
       .then((response) =>
         this.setState({
@@ -28,7 +28,7 @@ class AuthProvider extends React.Component {
   };
 
   signup = (data) => {
-    authService
+    this.authService
       .signup(data)
       .then((response) =>
         this.setState({ isLoggedIn: true, user: response.data })
@@ -90,10 +90,10 @@ class AuthProvider extends React.Component {
 }
 
 const withAuth = (WrappedComponent) => {
-  return (props) => {
+  return function(props){
     return (
       <Consumer>
-        {(value) => {
+        {value => {
           const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove } =
             value;
 

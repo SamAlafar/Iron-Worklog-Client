@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class AuthService {
-  contructor() {
+  constructor() {
     this.auth = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/auth`,
       withCredentials: true,
@@ -16,6 +16,4 @@ class AuthService {
   loggedin = () => this.auth.get('/loggedin');
 }
 
-const authService = new AuthService();
-
-export default authService;
+export default AuthService;

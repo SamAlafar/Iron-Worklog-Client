@@ -119,7 +119,7 @@ export default class SignupForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
         </div>
-        <Button>Sign up</Button>
+        <button>Sign up</button>
       </form>
     );
   }

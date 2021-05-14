@@ -14,6 +14,8 @@ class AuthService {
   edit = (data) => this.auth.put('/edit', data);
   delete = () => this.auth.delete('/delete');
   loggedin = () => this.auth.get('/loggedin');
+  googlelogin = () => this.auth.get('/google');
+  googlecallback = () => this.auth.get('google/callback');
 }
 
 export default AuthService;

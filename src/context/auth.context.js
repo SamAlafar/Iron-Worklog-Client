@@ -90,10 +90,10 @@ class AuthProvider extends Component {
 }
 
 const withAuth = (WrappedComponent) => {
-  return (props) => {
+  return function(props){
     return (
       <Consumer>
-        {(value) => {
+        {value => {
           const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove } =
             value;
 

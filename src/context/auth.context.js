@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AuthService from '../services/auth.service';
 
 const { Consumer, Provider } = React.createContext();
 
-class AuthProvider extends React.Component {
+class AuthProvider extends Component {
   state = {
     isLoggedIn: false,
     isLoading: false,
@@ -39,6 +39,15 @@ class AuthProvider extends React.Component {
   login = (data) => {
     this.authService
       .login(data)
+      .then((response) =>
+        this.setState({ isLoggedIn: true, user: response.data })
+      )
+      .catch(() => this.setState({ isLoggedIn: false, user: null }));
+  };
+
+  googlelogin = () => {
+    this.authService
+      .googlelogin()
       .then((response) =>
         this.setState({ isLoggedIn: true, user: response.data })
       )
@@ -82,6 +91,7 @@ class AuthProvider extends React.Component {
           logout: this.logout,
           edit: this.edit,
           remove: this.delete,
+          googlelogin: this.googlelogin
         }}>
         {this.props.children}
       </Provider>
@@ -94,7 +104,7 @@ const withAuth = (WrappedComponent) => {
     return (
       <Consumer>
         {value => {
-          const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove } =
+          const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove, googlelogin } =
             value;
 
           return (
@@ -107,6 +117,7 @@ const withAuth = (WrappedComponent) => {
               logout={logout}
               edit={edit}
               delete={remove}
+              googlelogin={googlelogin}
               {...props}
             />
           );

@@ -9,7 +9,7 @@ const Home = () => {
             <h1>TITULO</h1>
             <h2>SUBTITULO (CATCHPHRASE)</h2>
             <div>
-                {/* <Link to="/login"><button>Login</button></Link> */}
+                <Link to="/login"><button>Login</button></Link>
                 <Link to="/signup"><button>Sign up</button></Link>                
             </div>
         </div>

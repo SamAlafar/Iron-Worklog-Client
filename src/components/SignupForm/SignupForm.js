@@ -60,6 +60,14 @@ export default class SignupForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state.fields);
+    this.setState({ 
+      fields: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+      }
+    })
   }
 
   handleChange(e) {
@@ -119,7 +127,7 @@ export default class SignupForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
         </div>
-        <button>Sign up</button>
+        <button type='submit'>Sign up</button>
       </form>
     );
   }

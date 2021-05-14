@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AuthService from '../services/auth.service';
 
 const { Consumer, Provider } = React.createContext();
 
-class AuthProvider extends React.Component {
+class AuthProvider extends Component {
   state = {
     isLoggedIn: false,
     isLoading: false,
@@ -13,7 +13,7 @@ class AuthProvider extends React.Component {
   authService = new AuthService();
 
   componentDidMount = () => {
-    authService
+    this.authService
       .loggedin()
       .then((response) =>
         this.setState({
@@ -28,7 +28,7 @@ class AuthProvider extends React.Component {
   };
 
   signup = (data) => {
-    authService
+    this.authService
       .signup(data)
       .then((response) =>
         this.setState({ isLoggedIn: true, user: response.data })

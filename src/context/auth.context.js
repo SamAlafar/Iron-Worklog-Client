@@ -45,6 +45,15 @@ class AuthProvider extends Component {
       .catch(() => this.setState({ isLoggedIn: false, user: null }));
   };
 
+  googlelogin = () => {
+    this.authService
+      .googlelogin()
+      .then((response) =>
+        this.setState({ isLoggedIn: true, user: response.data })
+      )
+      .catch(() => this.setState({ isLoggedIn: false, user: null }));
+  };
+
   logout = () => {
     this.authService
       .logout()
@@ -82,6 +91,7 @@ class AuthProvider extends Component {
           logout: this.logout,
           edit: this.edit,
           remove: this.delete,
+          googlelogin: this.googlelogin
         }}>
         {this.props.children}
       </Provider>
@@ -94,7 +104,7 @@ const withAuth = (WrappedComponent) => {
     return (
       <Consumer>
         {value => {
-          const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove } =
+          const { isLoading, isLoggedIn, user, signup, login, logout, edit, remove, googlelogin } =
             value;
 
           return (
@@ -107,6 +117,7 @@ const withAuth = (WrappedComponent) => {
               logout={logout}
               edit={edit}
               delete={remove}
+              googlelogin={googlelogin}
               {...props}
             />
           );

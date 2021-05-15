@@ -5,10 +5,12 @@ import { withAuth } from '../../context/auth.context'
 class Login extends Component {
     render() {
         return (
-            <div>
-                <LoginForm login={this.props.login} />
-            </div>
-        )
+          <div>
+            <LoginForm login={this.props.login} />
+
+            <button onClick={() => this.handleClick()}>Login with Google</button> 
+          </div>
+        );
     }
 }
 

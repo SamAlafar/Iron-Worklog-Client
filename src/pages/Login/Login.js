@@ -8,7 +8,12 @@ class Login extends Component {
           <div>
             <LoginForm login={this.props.login} />
 
-            <button onClick={() => this.handleClick()}>Login with Google</button> 
+            <button
+              className='google-button'
+              onClick={() => this.handleClick()}>
+              <img className='google-logo' src='/img/google.png' />
+              Login with Google
+            </button>
           </div>
         );
     }

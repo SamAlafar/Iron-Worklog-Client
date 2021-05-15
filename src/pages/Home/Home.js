@@ -1,18 +1,32 @@
 import React from 'react';
+import './Home.scss';
 import { Link } from 'react-router-dom';
-import { withAuth } from '../../context/auth.context';
 
 const Home = () => {
-    return (
-        <div className="home-wrapper">
-            <img src="" alt="App screenshot"></img>
-            <h1>TITULO</h1>
-            <h2>SUBTITULO (CATCHPHRASE)</h2>
-            <div>
-                <Link to="/login"><button>Login</button></Link>
-                <Link to="/signup"><button>Sign up</button></Link>                
-            </div>
+  return (
+    <div className='home-wrapper'>
+      <img
+        className='home-logo'
+        src='/img/navbar-logo1.png'
+        alt='Iron Worklog Logo'
+      />
+      <section>
+        <div className="text-container">
+          <h1>TITULO</h1>
+          <h2>SUBTITULO (CATCHPHRASE)</h2>
         </div>
-    )
-}
+        <img src='/img/img-prueba.png' alt='App screenshot' />
+      </section>
+
+      <div className='home-button-container'>
+        <Link to='/login'>
+          <button className="button-action">Login</button>
+        </Link>
+        <Link to='/signup'>
+          <button className="button-action">Sign up</button>
+        </Link>
+      </div>
+    </div>
+  );
+};
 export default Home;

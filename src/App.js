@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import AnonRoute from './components/AnonRoute/AnonRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';

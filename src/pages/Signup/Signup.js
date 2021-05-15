@@ -12,7 +12,7 @@ class Signup extends Component {
             <div>
                 <SignupForm signup={this.props.signup}/>
 
-                {/* <button onClick={() => this.handleClick()}>Sign up with google</button> */}
+                <button onClick={() => this.handleClick()}>Sign up with Google</button>
             </div>
         )
     }

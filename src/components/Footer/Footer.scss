@@ -1,0 +1,34 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(235, 195, 64);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: #F7FFF7;
+}
+
+.footer-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+  color: #1A535C;
+  font-size: 1vw;
+  position: absolute;
+  li{
+      padding-right: 50px;
+  }
+}
+
+
+
+.footer-copyright {
+    display: flex;
+    padding-left: 80vw;
+    color: #1A535C;
+    font-size: 1vw;
+}

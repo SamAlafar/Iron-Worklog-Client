@@ -1,5 +1,6 @@
 html {
   background-image: url("./resources/img/svg/Subtle-Prism.svg");
   background-repeat: no-repeat;
-  height: 100vh;
+  object-fit: cover;
+  height: 100%;
 }

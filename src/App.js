@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
-import './App.css';
 import { Switch, Route } from 'react-router-dom';
+import './App.css';
+import AnonRoute from './components/AnonRoute/AnonRoute';
 import Home from './pages/Home/Home';
 import Signup from  './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <div>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/login' component={Login} />
+          <AnonRoute exact path='/signup' component={Signup} />
+          <AnonRoute exact path='/login' component={Login} />
         </Switch>
       </div>
     )
-  }
 }
 
 export default App;

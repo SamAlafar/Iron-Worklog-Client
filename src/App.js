@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
-import './App.css';
 import { Switch, Route } from 'react-router-dom';
+import './App.css';
+import AnonRoute from './components/AnonRoute/AnonRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home';
-// import Signup from './pages/Signup/Signup';
-import Signup from  './pages/Signup/Signup'
-import Login from './pages/Login/Login'
+import Signup from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/login' component={Login} />
-        </Switch>
-      </div>
-    )
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <AnonRoute exact path='/signup' component={Signup} />
+        <AnonRoute exact path='/login' component={Login} />
+      </Switch>
+    </div>
+  );
+};
 
 export default App;

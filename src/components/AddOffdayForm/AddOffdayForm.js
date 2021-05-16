@@ -63,7 +63,6 @@ export default class AddOffdayForm extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target);
     const { name, value } = e.target;
     this.setState({
       fields: {
@@ -108,20 +107,18 @@ export default class AddOffdayForm extends Component {
     return (
       <SCAddOffdayForm onSubmit={(e) => this.handleSubmit(e)}>
         <div className='form-item'>
-          <label htmlFor='type'>
-            Select off day type:
-          </label>
-            <select
-              name='type'
-              value={fields.type}
-              onChange={(e) => this.handleChange(e)}>
-              <option value=''></option>
-              <option value='holidays'>Holidays</option>
-              <option value='sickness'>Sick days</option>
-              <option value='off-days'>Off days</option>
-            </select>
+          <label htmlFor='type'>Select off day type:</label>
+          <select
+            name='type'
+            value={fields.type}
+            onChange={(e) => this.handleChange(e)}>
+            <option value=''></option>
+            <option value='holidays'>Holidays</option>
+            <option value='sickness'>Sick days</option>
+            <option value='off-days'>Off days</option>
+          </select>
         </div>
-        <div className="calendar-wrapper">
+        <div className='calendar-wrapper'>
           <div className='form-item'>
             <label htmlFor='startDay'>First day:</label>
             <Calendar
@@ -139,7 +136,9 @@ export default class AddOffdayForm extends Component {
             />
           </div>
         </div>
-        <button type='submit' className="btn-submit">Send</button>
+        <button type='submit' className='btn-submit'>
+          Send
+        </button>
       </SCAddOffdayForm>
     );
   }

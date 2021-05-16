@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import 'react-calendar/dist/Calendar.css';
 import SCAddOffdayForm from './AddOffdayForm.styled';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 
 const validators = {
   startDay: (value) => {

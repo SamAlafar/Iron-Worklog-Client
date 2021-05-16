@@ -27,9 +27,28 @@ const SCOffdays = styled.div`
     justify-content: space-between;
     text-align: center;
 
+    h2 {
+      font-size: 1.8rem;
+      padding: 5px;
+    }
+
+    .offdays-counter{
+      font-size: 1.5rem;
+      padding: 5px;
+    }
+
     .holidays-wrapper, .offdays-wrapper{
       width: 50%;
       margin: 1.5rem;
+
+      .list-header{
+        background-color: #F7FFF7;
+        border-radius: 5px;
+      }
+
+      .offday-item{
+        margin-bottom: 10px;
+      }
     }
   }
 `;

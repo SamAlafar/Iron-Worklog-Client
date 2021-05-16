@@ -31,26 +31,32 @@ class Offdays extends Component {
         <SCOffdays>
           <h1>Off days</h1>
           {/* ADD OFFDAY COMPONENT */}
-          <div className="add-wrapper">
+          <div className='add-wrapper'>
             <button className='btn-submit' onClick={() => this.handleShowAdd()}>
-            {!this.state.showAddForm ? 'Add offdays' : 'Close'}
+              {!this.state.showAddForm ? 'Add offdays' : 'Close'}
             </button>
           </div>
-            {this.state.showAddForm ? <AddOffdayForm /> : ''}
-            <div className="lists-wrapper">
-              {/* HOLIDAYS COMPONENT */}
-              <div className="holidays-wrapper">
+          {this.state.showAddForm ? <AddOffdayForm /> : ''}
+          <div className='lists-wrapper'>
+            {/* HOLIDAYS COMPONENT */}
+            <div className='holidays-wrapper'>
+              <div className='list-header'>
                 <h2>Holidays</h2>
-                <p>Remaining days: XXX</p>
-              <OffdayItem />
+                <p className='offdays-counter'>Remaining days: XXX</p>
               </div>
-              {/* ILLNESS / OFFDAYS COMPONENT */}
-              <div className="offdays-wrapper">
-              <h2>Off days and Sick days</h2>
-              <p>Absence days: XXX</p>
               <OffdayItem />
-              </div>
+              <OffdayItem />
+              <OffdayItem /><OffdayItem /><OffdayItem /><OffdayItem /><OffdayItem /><OffdayItem />
             </div>
+            {/* ILLNESS / OFFDAYS COMPONENT */}
+            <div className='offdays-wrapper'>
+              <div className='list-header'>
+                <h2>Off days and Sick days</h2>
+                <p className='offdays-counter'>Absence days: XXX</p>
+              </div>
+              <OffdayItem />
+            </div>
+          </div>
         </SCOffdays>
       </>
     );

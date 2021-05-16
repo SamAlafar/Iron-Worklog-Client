@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Offdays.scss';
+import SCOffdays from './Offdays.styled';
 import Navbar from '../../components/Navbar/Navbar';
 import AddOffdayForm from '../../components/AddOffdayForm/AddOffdayForm';
 import { withAuth } from '../../context/auth.context';
@@ -9,7 +9,7 @@ class Offdays extends Component {
     return (
       <>
         <Navbar />
-        <div className='page-wrapper'>
+        <SCOffdays>
           <h1>Off days</h1>
           {/* ADD OFFDAY COMPONENT */}
           <AddOffdayForm />
@@ -18,7 +18,7 @@ class Offdays extends Component {
             {/* ILLNESS / OFFDAYS COMPONENT */}
 
           </div>
-        </div>
+        </SCOffdays>
       </>
     );
   }

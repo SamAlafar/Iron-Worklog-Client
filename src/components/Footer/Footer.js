@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
-import './Footer.scss'
+import {SCFooter, SCFooterList, SCFooterCopyright} from './Footer.styled'
+//import './Footer.scss'
 
 export default class Footer extends Component {
     render() {
         return (
-          <div className='footer'>
-            <div className='footer-list'>
+          <SCFooter>
+            <SCFooterList>
                 <li>General Terms and Conditions</li>
                 <li>Privacy Policy</li>
                 <li>Legal Notice</li>
-            </div>
+            </SCFooterList>
 
-            <div className="footer-copyright">
+            <SCFooterCopyright>
                 <p>© Developed by Iron Worklog</p>
-            </div>
-          </div>
+            </SCFooterCopyright>
+          </SCFooter>
         );
     }
 }

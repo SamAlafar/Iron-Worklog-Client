@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <AnonRoute exact path='/signup' component={Signup} />
         <AnonRoute exact path='/login' component={Login} />
       </Switch>
+      <Footer />
     </div>
   );
 };

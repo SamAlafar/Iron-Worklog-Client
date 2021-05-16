@@ -110,35 +110,36 @@ export default class AddOffdayForm extends Component {
         <div className='form-item'>
           <label htmlFor='type'>
             Select off day type:
+          </label>
             <select
               name='type'
               value={fields.type}
               onChange={(e) => this.handleChange(e)}>
-                <option value=""></option>
+              <option value=''></option>
               <option value='holidays'>Holidays</option>
               <option value='sickness'>Sick days</option>
               <option value='off-days'>Off days</option>
             </select>
-          </label>
         </div>
-        <div className='form-item'>
-          <label htmlFor='startDay'>Select first day:</label>
-          <Calendar
-            name='startDay'
-            value={fields.startDay}
-            onChange={this.handleStartDateChange}
-          />
+        <div className="calendar-wrapper">
+          <div className='form-item'>
+            <label htmlFor='startDay'>First day:</label>
+            <Calendar
+              name='startDay'
+              value={fields.startDay}
+              onChange={this.handleStartDateChange}
+            />
+          </div>
+          <div className='form-item'>
+            <label htmlFor='endDay'>Last day:</label>
+            <Calendar
+              name='endDay'
+              value={fields.endDay}
+              onChange={this.handleEndDateChange}
+            />
+          </div>
         </div>
-
-        <div className='form-item'>
-          <label htmlFor='endDay'>Select last day:</label>
-          <Calendar
-            name='endDay'
-            value={fields.endDay}
-            onChange={this.handleEndDateChange}
-          />
-        </div>
-        <button type='submit'>Send</button>
+        <button type='submit' className="btn-submit">Send</button>
       </SCAddOffdayForm>
     );
   }

@@ -43,6 +43,7 @@ const SCNavbar = styled.nav`
       position: absolute;
       top: 70px;
       right: 30px;
+      z-index: 1;
       a:hover {
         background-color: #1a535c;
       }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SCOffdays = styled.div`
+const SCOffdaysEdit = styled.div`
   padding: 4rem;
 
   h1 {
@@ -53,4 +53,4 @@ const SCOffdays = styled.div`
   }
 `;
 
-export default SCOffdays;
+export default SCOffdaysEdit;

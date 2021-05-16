@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import SCAddOffdayForm from './AddOffdayForm.styled';
+import SCUpdateOffdayForm from './UpdateOffdayForm.styled';
 import Calendar from 'react-calendar';
+import { Redirect, withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router';
 
 const validators = {
   startDay: (value) => {
@@ -27,14 +29,14 @@ const validators = {
   },
 };
 
-export default class AddOffdayForm extends Component {
+class UpdateOffdayForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       fields: {
-        startDay: new Date(),
-        endDay: new Date(),
-        type: '',
+        startDay: this.props.startDay,
+        endDay: this.props.endDay,
+        type: this.props.type,
       },
       errors: {
         startDay: null,
@@ -47,19 +49,9 @@ export default class AddOffdayForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state.fields);
-    // this.props.createOffday(this.state.fields);
-    this.setState({
-      fields: {
-        startDay: new Date(),
-        endDay: new Date(),
-        type: '',
-      },
-      errors: {
-        startDay: null,
-        endDay: null,
-        type: null,
-      },
-    });
+    // this.props.editOffday(this.state.fields);
+    // <Redirect to="/offdays" />
+    this.props.history.push('/offdays');
   }
 
   handleChange(e) {
@@ -105,7 +97,7 @@ export default class AddOffdayForm extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <SCAddOffdayForm onSubmit={(e) => this.handleSubmit(e)}>
+      <SCUpdateOffdayForm onSubmit={(e) => this.handleSubmit(e)}>
         <div className='form-item'>
           <label htmlFor='type'>Select off day type:</label>
           <select
@@ -137,9 +129,11 @@ export default class AddOffdayForm extends Component {
           </div>
         </div>
         <button type='submit' className='btn-submit'>
-          Send
+          Update
         </button>
-      </SCAddOffdayForm>
+      </SCUpdateOffdayForm>
     );
   }
 }
+
+export default withRouter(UpdateOffdayForm);

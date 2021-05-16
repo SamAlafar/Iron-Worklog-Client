@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SCNavbar from './Navbar.styled';
 import { NavLink, Link } from 'react-router-dom';
-// import { withAuth } from '../../context/auth.context';
+import { withAuth } from '../../context/auth.context';
 
 class Navbar extends Component {
   state = {
@@ -12,6 +12,11 @@ class Navbar extends Component {
     e.preventDefault();
     this.setState({ showUserMenu: !this.state.showUserMenu });
   };
+
+  logout = (e) => {
+    e.preventDefault();
+    this.props.logout();
+  }
 
   render() {
     return (
@@ -30,16 +35,15 @@ class Navbar extends Component {
               Off days
             </NavLink>
             <p>
-              Welcome
-              {/* {this.props.user.email} */}
+              {`Welcome ${this.props.user.firstName}`}
             </p>
-            <a onClick={(e) => this.showMenu(e)}>
-              <img src='' alt='User picture' />
+            <a href="/" onClick={(e) => this.showMenu(e)}>
+              <img src='' alt='User' />
             </a>
             {this.state.showUserMenu ? (
               <div className='user-menu'>
-                <Link to=''>Edit Profile</Link>
-                <Link to=''>Logout</Link>
+                <Link to='/profile-edit'>Edit Profile</Link>
+                <Link to='/dashboard' onClick={(e)=>this.logout(e)}>Logout</Link>
               </div>
             ) : null}
           </div>
@@ -49,4 +53,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withAuth(Navbar);

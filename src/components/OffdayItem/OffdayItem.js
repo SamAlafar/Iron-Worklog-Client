@@ -11,7 +11,7 @@ export default function OffdayItem() {
         <p>End day: 30/05/2021</p>
       </div>
         <div className="action-wrapper">
-          <Link to="/edit"><i className="fas fa-edit"></i></Link>
+          <Link to="/offdays/edit"><i className="fas fa-edit"></i></Link>
           <Link to=""><i className="fas fa-trash-alt"></i></Link>
         </div>
     </SCOffdayItem>

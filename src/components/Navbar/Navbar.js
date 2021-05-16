@@ -16,7 +16,6 @@ class Navbar extends Component {
   render() {
     return (
       <>
-        {console.log(this.props)}
         <SCNavbar>
           <img src='/img/navbar-logo2.png' alt='Iron Worklog Logo' />
 

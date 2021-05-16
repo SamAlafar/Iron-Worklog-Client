@@ -1,4 +1,6 @@
-nav {
+import styled from 'styled-components';
+
+const SCNavbar = styled.nav`
   background: linear-gradient(180deg, #1a535c 0%, #4ecdc4 100%), #f7fff7;
   height: 70px;
   padding: 2rem;
@@ -46,4 +48,6 @@ nav {
       }
     }
   }
-}
+`;
+
+export default SCNavbar;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import { withAuth } from '../../context/auth.context'
+import {SCButton, SCImage} from './Login.styled'
 
 class Login extends Component {
     render() {
@@ -8,12 +9,11 @@ class Login extends Component {
           <div>
             <LoginForm login={this.props.login} />
 
-            <button
-              className='google-button'
+            <SCButton
               onClick={() => this.handleClick()}>
-              <img className='google-logo' src='/img/google.png' />
+              <SCImage src='/img/google.png' />
               Login with Google
-            </button>
+            </SCButton>
           </div>
         );
     }

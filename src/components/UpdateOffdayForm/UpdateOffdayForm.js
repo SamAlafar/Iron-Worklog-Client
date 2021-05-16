@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import SCUpdateOffdayForm from './UpdateOffdayForm.styled';
 import Calendar from 'react-calendar';
-import { Redirect, withRouter } from 'react-router-dom';
-// import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
+import { withAuth } from '../../context/auth.context';
 
 const validators = {
   startDay: (value) => {
@@ -136,4 +136,4 @@ class UpdateOffdayForm extends Component {
   }
 }
 
-export default withRouter(UpdateOffdayForm);
+export default withRouter(withAuth(UpdateOffdayForm));

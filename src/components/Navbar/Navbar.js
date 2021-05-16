@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Navbar.scss';
+import SCNavbar from './Navbar.styled';
 import { NavLink, Link } from 'react-router-dom';
 // import { withAuth } from '../../context/auth.context';
 
@@ -17,7 +17,7 @@ class Navbar extends Component {
     return (
       <>
         {console.log(this.props)}
-        <nav>
+        <SCNavbar>
           <img src='/img/navbar-logo2.png' alt='Iron Worklog Logo' />
 
           <div className='nav-menu'>
@@ -44,7 +44,7 @@ class Navbar extends Component {
               </div>
             ) : null}
           </div>
-        </nav>
+        </SCNavbar>
       </>
     );
   }

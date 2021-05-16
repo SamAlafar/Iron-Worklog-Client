@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AddOffdayForm.scss';
+import SCAddOffdayForm from './AddOffdayForm.styled';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -106,40 +106,41 @@ export default class AddOffdayForm extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
+      <SCAddOffdayForm onSubmit={(e) => this.handleSubmit(e)}>
         <div className='form-item'>
           <label htmlFor='type'>
             Select off day type:
+          </label>
             <select
               name='type'
               value={fields.type}
               onChange={(e) => this.handleChange(e)}>
-                <option value=""></option>
+              <option value=''></option>
               <option value='holidays'>Holidays</option>
               <option value='sickness'>Sick days</option>
               <option value='off-days'>Off days</option>
             </select>
-          </label>
         </div>
-        <div className='form-item'>
-          <label htmlFor='startDay'>Select first day:</label>
-          <Calendar
-            name='startDay'
-            value={fields.startDay}
-            onChange={this.handleStartDateChange}
-          />
+        <div className="calendar-wrapper">
+          <div className='form-item'>
+            <label htmlFor='startDay'>First day:</label>
+            <Calendar
+              name='startDay'
+              value={fields.startDay}
+              onChange={this.handleStartDateChange}
+            />
+          </div>
+          <div className='form-item'>
+            <label htmlFor='endDay'>Last day:</label>
+            <Calendar
+              name='endDay'
+              value={fields.endDay}
+              onChange={this.handleEndDateChange}
+            />
+          </div>
         </div>
-
-        <div className='form-item'>
-          <label htmlFor='endDay'>Select last day:</label>
-          <Calendar
-            name='endDay'
-            value={fields.endDay}
-            onChange={this.handleEndDateChange}
-          />
-        </div>
-        <button type='submit'>Send</button>
-      </form>
+        <button type='submit' className="btn-submit">Send</button>
+      </SCAddOffdayForm>
     );
   }
 }

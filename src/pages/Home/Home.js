@@ -1,10 +1,10 @@
 import React from 'react';
-import './Home.scss';
+import SCHome from './Home.styled';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className='home-wrapper'>
+    <SCHome className='home-wrapper'>
       <img
         className='home-logo'
         src='/img/navbar-logo1.png'
@@ -29,7 +29,7 @@ const Home = () => {
           <button className="button-action">offdays</button>
         </Link>
       </div>
-    </div>
+    </SCHome>
   );
 };
 export default Home;

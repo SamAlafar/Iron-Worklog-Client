@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AddOffdayForm.scss';
+import SCAddOffdayForm from './AddOffdayForm.styled';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -106,7 +106,7 @@ export default class AddOffdayForm extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
+      <SCAddOffdayForm onSubmit={(e) => this.handleSubmit(e)}>
         <div className='form-item'>
           <label htmlFor='type'>
             Select off day type:
@@ -139,7 +139,7 @@ export default class AddOffdayForm extends Component {
           />
         </div>
         <button type='submit'>Send</button>
-      </form>
+      </SCAddOffdayForm>
     );
   }
 }

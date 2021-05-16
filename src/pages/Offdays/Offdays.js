@@ -46,7 +46,12 @@ class Offdays extends Component {
               </div>
               <OffdayItem />
               <OffdayItem />
-              <OffdayItem /><OffdayItem /><OffdayItem /><OffdayItem /><OffdayItem /><OffdayItem />
+              <OffdayItem />
+              <OffdayItem />
+              <OffdayItem />
+              <OffdayItem />
+              <OffdayItem />
+              <OffdayItem />
             </div>
             {/* ILLNESS / OFFDAYS COMPONENT */}
             <div className='offdays-wrapper'>

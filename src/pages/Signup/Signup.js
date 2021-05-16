@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import SignupForm from '../../components/SignupForm/SignupForm'
 import { withAuth } from '../../context/auth.context'
-import './Signup.scss'
+import {SCButton, SCImage} from './Signup.styled'
+//import './Signup.scss'
 
 class Signup extends Component {
     handleClick() {
@@ -13,7 +14,7 @@ class Signup extends Component {
             <div>
                 <SignupForm signup={this.props.signup}/>
 
-                <button className='google-button' onClick={() => this.handleClick()}><img className='google-logo' src='/img/google.png'/>Sign up with Google</button>
+                <SCButton onClick={() => this.handleClick()}><SCImage src='/img/google.png'/>Sign up with Google</SCButton>
             </div>
         )
     }

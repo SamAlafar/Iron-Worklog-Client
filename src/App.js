@@ -8,6 +8,8 @@ import Login from './pages/Login/Login';
 import Footer from './components/Footer/Footer'
 import Offdays from './pages/Offdays/Offdays';
 import OffdaysEdit from './pages/OffdaysEdit/OffdaysEdit';
+import Dashboard from './pages/Dashboard/Dashboard';
+import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 
 const App = () => {
   return (
@@ -16,8 +18,10 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <AnonRoute exact path='/signup' component={Signup} />
         <AnonRoute exact path='/login' component={Login} />
-        <Route exact path='/offdays' component={Offdays} />
-        <Route exact path='/offdays/edit' component={OffdaysEdit} />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/profile-edit' component={ProfileEdit} />
+        <PrivateRoute exact path='/offdays' component={Offdays} />
+        <PrivateRoute exact path='/offdays/edit' component={OffdaysEdit} />
       </Switch>
       <Footer />
     </div>

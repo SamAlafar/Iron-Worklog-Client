@@ -13,10 +13,10 @@ export default function RegisterItem() {
       </div>
 
       <div className='action-wrapper'>
-        <Link>
+        <Link to='/registers/:id'>
           <i class='fas fa-eye'></i>
         </Link>
-        <Link>
+        <Link to='/registers/edit/:id'>
           <i class='fas fa-edit'></i>
         </Link>
         <Link>

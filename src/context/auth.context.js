@@ -6,7 +6,7 @@ const { Consumer, Provider } = React.createContext();
 class AuthProvider extends Component {
   state = {
     isLoggedIn: false,
-    isLoading: false,
+    isLoading: true,
     user: null,
   };
 

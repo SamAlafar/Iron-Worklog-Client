@@ -23,6 +23,7 @@ const SCRegisterItem = styled.div`
   }
 
   .action-wrapper {
+    display: flex;
     color: #f7fff7;
 
     a {

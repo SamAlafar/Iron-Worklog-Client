@@ -24,14 +24,21 @@ class Registers extends Component {
         <Navbar />
         <SCRegisters>
           <h1>Registers</h1>
-          <div className='registers-wrapper'>
-            <RegisterItem />
-            <RegisterItem />
-            <RegisterItem />
-            <RegisterItem />
-          </div>
-          <div className='calendar'>
-            <Calendar />
+          <div className='registers-container'>
+            <div className='registers-wrapper'>
+              <RegisterItem />
+
+              <RegisterItem />
+
+              <RegisterItem />
+
+              <RegisterItem />
+
+              <RegisterItem />
+            </div>
+            <div className='calendar-wrapper'>
+              <Calendar />
+            </div>
           </div>
         </SCRegisters>
       </>

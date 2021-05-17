@@ -29,6 +29,7 @@ const SCNavbar = styled.nav`
       }
       &.active {
         color: #ff6b6b;
+        font-weight: 700;
       }
     }
     p {

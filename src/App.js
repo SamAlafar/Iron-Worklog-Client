@@ -11,6 +11,7 @@ import Registers from './pages/Registers/Registers'
 import OffdaysEdit from './pages/OffdaysEdit/OffdaysEdit';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import RegisterDetails from './pages/RegisterDetails/RegisterDetails';
 
 const App = () => {
   return (
@@ -19,13 +20,12 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <AnonRoute exact path='/signup' component={Signup} />
         <AnonRoute exact path='/login' component={Login} />
-        <Route exact path='/offdays' component={Offdays} />
-        <Route exact path='/registers' component={Registers} />
-        <Route exact path='/offdays/edit' component={OffdaysEdit} />
+        <PrivateRoute exact path='/registers' component={Registers} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/profile-edit' component={ProfileEdit} />
         <PrivateRoute exact path='/offdays' component={Offdays} />
         <PrivateRoute exact path='/offdays/edit' component={OffdaysEdit} />
+        <PrivateRoute exact path='/registers/:id' component={RegisterDetails} />
       </Switch>
       <Footer />
     </div>

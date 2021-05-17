@@ -26,6 +26,9 @@ class Registers extends Component {
           <h1>Registers</h1>
           <div className='registers-wrapper'>
             <RegisterItem />
+            <RegisterItem />
+            <RegisterItem />
+            <RegisterItem />
           </div>
           <div className='calendar'>
             <Calendar />

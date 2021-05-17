@@ -13,6 +13,7 @@ padding: 4rem;
       margin: 1.5rem;
   }
 
+
   .calendar {
     display: flex;
     align-items: center;

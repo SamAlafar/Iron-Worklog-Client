@@ -46,12 +46,7 @@ class AuthProvider extends Component {
   };
 
   googlelogin = () => {
-    this.authService
-      .googlelogin()
-      .then((response) =>
-        this.setState({ isLoggedIn: true, user: response.data })
-      )
-      .catch(() => this.setState({ isLoggedIn: false, user: null }));
+    window.open(`${process.env.REACT_APP_API_URL}/auth/google`, '_self')
   };
 
   logout = () => {

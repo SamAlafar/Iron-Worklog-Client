@@ -10,6 +10,7 @@ import Offdays from './pages/Offdays/Offdays';
 import OffdaysEdit from './pages/OffdaysEdit/OffdaysEdit';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import Profile from './pages/Profile/Profile';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <AnonRoute exact path='/signup' component={Signup} />
         <AnonRoute exact path='/login' component={Login} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/profile-edit' component={ProfileEdit} />
         <PrivateRoute exact path='/offdays' component={Offdays} />
         <PrivateRoute exact path='/offdays/edit' component={OffdaysEdit} />

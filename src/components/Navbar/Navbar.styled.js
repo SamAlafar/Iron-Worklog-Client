@@ -29,11 +29,16 @@ const SCNavbar = styled.nav`
       }
       &.active {
         color: #ff6b6b;
+        font-weight: 700;
       }
     }
     p {
       font-size: 2.4rem;
       padding: 3rem;
+    }
+
+    img {
+      width: 65px;
     }
 
     .user-menu {
@@ -44,9 +49,10 @@ const SCNavbar = styled.nav`
       top: 70px;
       right: 30px;
       z-index: 1;
+
       a:hover {
         background-color: #1a535c;
-      }
+      }      
     }
   }
 `;

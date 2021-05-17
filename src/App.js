@@ -12,6 +12,7 @@ import OffdaysEdit from './pages/OffdaysEdit/OffdaysEdit';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import RegisterDetails from './pages/RegisterDetails/RegisterDetails';
+import Profile from './pages/Profile/Profile';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <AnonRoute exact path='/login' component={Login} />
         <PrivateRoute exact path='/registers' component={Registers} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/profile-edit' component={ProfileEdit} />
         <PrivateRoute exact path='/offdays' component={Offdays} />
         <PrivateRoute exact path='/offdays/edit' component={OffdaysEdit} />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SCNavbar from './Navbar.styled';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { withAuth } from '../../context/auth.context';
 
 class Navbar extends Component {
@@ -38,12 +38,13 @@ class Navbar extends Component {
               {`Welcome ${this.props.user.firstName}`}
             </p>
             <a href="/" onClick={(e) => this.showMenu(e)}>
-              <img src='' alt='User' />
+              <img src={this.props.user.profilePic} alt='User' />
             </a>
             {this.state.showUserMenu ? (
               <div className='user-menu'>
-                <Link to='/profile-edit'>Edit Profile</Link>
-                <Link to='/dashboard' onClick={(e)=>this.logout(e)}>Logout</Link>
+                <NavLink to='/profile' activeClassName="active" >Profile</NavLink>
+                <NavLink to='/profile-edit' activeClassName="active" >Edit Profile</NavLink>
+                <NavLink to='/dashboard' onClick={(e)=>this.logout(e)}>Logout</NavLink>
               </div>
             ) : null}
           </div>

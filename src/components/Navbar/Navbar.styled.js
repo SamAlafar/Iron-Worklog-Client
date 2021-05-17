@@ -36,6 +36,10 @@ const SCNavbar = styled.nav`
       padding: 3rem;
     }
 
+    img {
+      width: 65px;
+    }
+
     .user-menu {
       display: flex;
       flex-direction: column;
@@ -44,9 +48,10 @@ const SCNavbar = styled.nav`
       top: 70px;
       right: 30px;
       z-index: 1;
+
       a:hover {
         background-color: #1a535c;
-      }
+      }      
     }
   }
 `;

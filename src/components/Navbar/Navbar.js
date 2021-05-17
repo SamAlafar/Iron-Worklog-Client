@@ -38,7 +38,7 @@ class Navbar extends Component {
               {`Welcome ${this.props.user.firstName}`}
             </p>
             <a href="/" onClick={(e) => this.showMenu(e)}>
-              <img src='' alt='User' />
+              <img src={this.props.user.profilePic} alt='User' />
             </a>
             {this.state.showUserMenu ? (
               <div className='user-menu'>

@@ -54,11 +54,11 @@ const SCRegisterDetailItem = styled.div`
     align-items: center;
     justify-content: center;
     padding-top: 50px;
-  }
-
-  .standup-wrapper > p {
-    text-decoration: underline;
-    text-align: center;
+    label {
+      text-decoration: underline;
+      text-align: center;
+    }
+    p {
     margin-right: 20px;
     padding-top: 10px;
     border: 2px solid #f7fff7;
@@ -66,6 +66,7 @@ const SCRegisterDetailItem = styled.div`
     height: 350px;
     background-color: rgba(247, 255, 247, 0.4);
     border-radius: 5px;
+  }
   }
 `;
 

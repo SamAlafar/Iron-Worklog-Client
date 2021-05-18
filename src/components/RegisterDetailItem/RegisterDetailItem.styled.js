@@ -12,16 +12,19 @@ const SCRegisterDetailItem = styled.div`
 
   .work-hour > p {
     margin-bottom: 30px;
+    padding-top: 15px;
   }
 
   .break-hour > p {
     margin-bottom: 30px;
     margin-left: 40px;
+    padding-top: 15px;
   }
 
   .worked-hours > p {
     margin-bottom: 30px;
     margin-left: 40px;
+    padding-top: 15px;
   }
 
   .start-style {
@@ -58,13 +61,12 @@ const SCRegisterDetailItem = styled.div`
     text-align: center;
     margin-right: 20px;
     padding-top: 10px;
-    border: 3px solid black;
+    border: 2px solid #f7fff7;
     width: 350px;
     height: 350px;
     background-color: rgba(247, 255, 247, 0.4);
     border-radius: 5px;
   }
-
 `;
 
 export default SCRegisterDetailItem;

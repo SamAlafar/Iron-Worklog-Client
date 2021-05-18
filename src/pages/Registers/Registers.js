@@ -36,6 +36,7 @@ class Registers extends Component {
 
               <RegisterItem />
             </div>
+            <a href='/registers/edit/60a3c21718dee414717111a5'>Link</a>
             <div className='calendar-wrapper'>
               <Calendar />
             </div>

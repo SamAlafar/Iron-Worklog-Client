@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import { withAuth } from '../../context/auth.context';
 import OffdayItem from '../../components/OffdayItem/OffdayItem';
 import Calendar from 'react-calendar';
+import JourneyService from '../../services/journeys.service';
 
 class Dashboard extends Component {
   state = {
@@ -11,9 +12,16 @@ class Dashboard extends Component {
     offdays: [],
   };
   // INSTANCE OF SERVICES TO CALL AND GET THE INFO
+  journeyService = new JourneyService();
 
   componentDidMount() {
     // API CALLS TO GET REGISTERS AND OFFDAYS OF THE USER LOGGED IN
+    this.journeyService
+      .get()
+      .then((response) => this.setState({ registers: response.data }))
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   render() {
@@ -21,7 +29,7 @@ class Dashboard extends Component {
       <>
         <Navbar />
         <SCDashboard>
-          <div className="top-section">
+          <div className='top-section'>
             {/* CREATE REGISTER FORM COMPONENT */}
             <div className='add-register-container'></div>
             <Calendar />
@@ -30,6 +38,14 @@ class Dashboard extends Component {
             <div className='register-container'>
               {/* MAP REGISTERS OF CURRENT WEEK + DISPLAY REGISTER ITEM IN A LIST */}
               <OffdayItem />
+              {this.state.registers.map((journey) => {
+                //if day in week 40 return info
+                return (
+                  <p key={journey.createdAt}>
+                    {new Date(journey.startHour).getHours()}:{new Date(journey.startHour).getMinutes()}
+                  </p>
+                );
+              })}
             </div>
             <div className='offdays-container'>
               {/* MAP OFFDAYS OF CURRENT YEAR + DISPLAY OFFDAYS ITEM IN A LIST */}

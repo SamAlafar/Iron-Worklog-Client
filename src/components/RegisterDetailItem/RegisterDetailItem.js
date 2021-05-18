@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import SCRegisterDetailItem from './RegisterDetailItem.styled';
 import dayjs from 'dayjs';
 import JourneyService from '../../services/journeys.service';
-import { withAuth } from '../../context/auth.context'
+import { withRouter } from 'react-router-dom';
+import { withAuth } from '../../context/auth.context';
 
 class RegisterDetailItem extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class RegisterDetailItem extends Component {
     this.journeyService = new JourneyService();
   }
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props);
     this.journeyService.getOne(this.props.match.params.id).then((response) => {
       this.setState({
         fields: response.data,
@@ -56,8 +57,14 @@ class RegisterDetailItem extends Component {
             </div>
           </div>
           <div className='standup-wrapper'>
-            <p>Prework Standup</p>
-            <p>Afterwork Standup</p>
+            <div>
+              <label>Prework Standup</label>
+              <p>{this.state.fields.morningStandup}</p>
+            </div>
+            <div>
+              <label>Afterwork Standup</label>
+              <p>{this.state.fields.eveningStandup}</p>
+            </div>
           </div>
         </SCRegisterDetailItem>
       </>
@@ -65,4 +72,4 @@ class RegisterDetailItem extends Component {
   }
 }
 
-export default withAuth(RegisterDetailItem);
+export default withRouter(withAuth(RegisterDetailItem));

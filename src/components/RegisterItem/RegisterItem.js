@@ -1,25 +1,28 @@
 import React from 'react';
 import SCRegisterItem from './RegisterItem.styled';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
-export default function RegisterItem() {
+export default function RegisterItem({register, deleteRegister}) {
+  
   return (
     <SCRegisterItem className='register-item'>
       <div className='registers-wrapper'>
-        <p>Start hour: 09:00</p>
-        <p>End hour: 18:00</p>
-        <p>Start break: 13:30</p>
-        <p>End break: 14:30</p>
+        <p>Date: {dayjs(register.date).format('DD/MM/YYYY')}</p>
+        <p>Start hour: {register.startHour}</p>
+        <p>End hour: {register.endHour}</p>
+        <p>Start break: {register.startBreak}</p>
+        <p>End break: {register.endBreak}</p>
       </div>
 
       <div className='action-wrapper'>
-        <Link to='/registers/:id'>
+        <Link to={`/registers/${register.id}`}>
           <i className='fas fa-eye'></i>
         </Link>
-        <Link to='/registers/edit/:id'>
+        <Link to={`/registers/edit/${register.id}`}>
           <i className='fas fa-edit'></i>
         </Link>
-        <Link>
+        <Link onClick={()=>deleteRegister(register.id)}>
           <i className='fas fa-trash-alt'></i>
         </Link>
       </div>

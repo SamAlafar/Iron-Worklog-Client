@@ -6,6 +6,9 @@ import OffdayItem from '../../components/OffdayItem/OffdayItem';
 import Calendar from 'react-calendar';
 import JourneyService from '../../services/journeys.service';
 import JourneyCreateForm from '../../components/JourneyCreateForm/JourneyCreateForm';
+import JourneyService from '../../services/journeys.service';
+import dayjs from 'dayjs';
+import RegisterItem from '../../components/RegisterItem/RegisterItem';
 
 class Dashboard extends Component {
   state = {
@@ -19,10 +22,28 @@ class Dashboard extends Component {
     // API CALLS TO GET REGISTERS AND OFFDAYS OF THE USER LOGGED IN
     this.journeyService
       .get()
-      .then((response) => this.setState({ registers: response.data }))
-      .catch((err) => {
-        console.error(err);
+      .then((response) => {
+        this.setState({
+          registers: response.data,
+        });
+      })
+      .catch((error) => console.error(error));
+  }
+
+  deleteRegister(id) {
+    console.log(id);
+    this.journeyService.deleteOne(id).then((response) => {
+      const registersCopy = this.state.registers.filter((register) => {
+        console.log(!id === register.id);
+        if (!id === register.id) {
+          return register;
+        }
       });
+      console.log(registersCopy)
+/*       this.setState({
+        registers: registersCopy,
+      }); */
+    });
   }
 
   render() {
@@ -40,14 +61,16 @@ class Dashboard extends Component {
           <div className='lists-wrapper'>
             <div className='register-container'>
               {/* MAP REGISTERS OF CURRENT WEEK + DISPLAY REGISTER ITEM IN A LIST */}
-              <OffdayItem />
-              {this.state.registers.map((journey) => {
-                //if day in week 40 return info
-                return (
-                  <p key={journey.createdAt}>
-                    {journey.startHour}
-                  </p>
-                );
+              {this.state.registers.map((register) => {
+                if (dayjs(register.date).isSame(dayjs(), 'week')) {
+                  return (
+                    <RegisterItem
+                      key={register.id}
+                      register={register}
+                      deleteRegister={() => this.deleteRegister(register.id)}
+                    />
+                  );
+                }
               })}
             </div>
             <div className='offdays-container'>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SCRegisterDetailItem = styled.div`
+const SCRegisterEditItem = styled.form`
   font-size: 2rem;
   .details-wrapper {
     margin-top: 3rem;
@@ -13,15 +13,10 @@ const SCRegisterDetailItem = styled.div`
   .work-hour > p {
     margin-bottom: 30px;
     padding-top: 15px;
+
   }
 
   .break-hour > p {
-    margin-bottom: 30px;
-    margin-left: 40px;
-    padding-top: 15px;
-  }
-
-  .worked-hours > p {
     margin-bottom: 30px;
     margin-left: 40px;
     padding-top: 15px;
@@ -41,24 +36,15 @@ const SCRegisterDetailItem = styled.div`
     border-radius: 30px;
   }
 
-  .worked-style,
-  .extra-style {
-    background-color: #ffe66d;
-    width: 190px;
-    height: 50px;
-    border-radius: 30px;
-  }
-
   .standup-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 30px;
   }
 
-  .standup-wrapper > p {
-    text-decoration: underline;
-    text-align: center;
+  .standup-wrapper > textarea {
+    text-align: left;
     margin-right: 20px;
     padding-top: 10px;
     border: 2px solid #f7fff7;
@@ -67,6 +53,29 @@ const SCRegisterDetailItem = styled.div`
     background-color: rgba(247, 255, 247, 0.4);
     border-radius: 5px;
   }
+
+  .standup-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+    margin-top: 20px;
+  }
+
+  .btn-submit {
+    font-size: 30px;
+    background-color: #1a535c;
+    width: 250px;
+    height: 38px;
+    border-radius: 10px;
+    color: #ffe66d;
+    display: flex;
+    align-ietms: center;
+    justify-content: center;
+    margin-left: 830px;
+    margin-top: 30px;
+  }
+
 `;
 
-export default SCRegisterDetailItem;
+export default SCRegisterEditItem;

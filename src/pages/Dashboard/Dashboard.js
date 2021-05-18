@@ -5,6 +5,7 @@ import { withAuth } from '../../context/auth.context';
 import OffdayItem from '../../components/OffdayItem/OffdayItem';
 import Calendar from 'react-calendar';
 import JourneyService from '../../services/journeys.service';
+import JourneyCreateForm from '../../components/JourneyCreateForm/JourneyCreateForm';
 
 class Dashboard extends Component {
   state = {
@@ -31,7 +32,9 @@ class Dashboard extends Component {
         <SCDashboard>
           <div className='top-section'>
             {/* CREATE REGISTER FORM COMPONENT */}
-            <div className='add-register-container'></div>
+            <div className='add-register-container'>
+              <JourneyCreateForm />
+            </div>
             <Calendar />
           </div>
           <div className='lists-wrapper'>

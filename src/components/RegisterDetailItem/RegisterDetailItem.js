@@ -1,6 +1,6 @@
 import React from 'react';
 import SCRegisterDetailItem from './RegisterDetailItem.styled';
-import { Link } from 'react-router-dom';
+
 
 export default function RegisterDetailItem() {
   return (

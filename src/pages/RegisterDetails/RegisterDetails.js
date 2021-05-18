@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import RegisterDetailItem from '../../components/RegisterDetailItem/RegisterDetailItem';
-import Calendar from 'react-calendar';
 import SCRegisterDetails from './RegisterDetails.styled';
 import { withAuth } from '../../context/auth.context';
 import { Link } from 'react-router-dom' 

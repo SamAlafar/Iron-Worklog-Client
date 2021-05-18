@@ -11,6 +11,6 @@ export default class JourneyService{
     create = data => this.instance.post('/', data);
     get = () => this.instance.get('/');
     getOne = id => this.instace.get(`/${id}`);
-    updateOne = (id, data) => this.instance.put(`/${id}`);
+    updateOne = (id, data) => this.instance.put(`/${id}`, data);
     deleteOne = id => this.instance.delete(`/${id}`);
 }

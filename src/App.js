@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import RegisterDetails from './pages/RegisterDetails/RegisterDetails';
 import Profile from './pages/Profile/Profile';
+import RegisterEdit from './pages/RegisterEdit/RegisterEdit';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <PrivateRoute exact path='/offdays' component={Offdays} />
         <PrivateRoute exact path='/offdays/edit' component={OffdaysEdit} />
         <PrivateRoute exact path='/registers/:id' component={RegisterDetails} />
+        <PrivateRoute exact path='/registers/edit/:id' component={RegisterEdit} />
       </Switch>
       <Footer />
     </div>

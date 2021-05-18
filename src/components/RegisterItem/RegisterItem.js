@@ -14,13 +14,13 @@ export default function RegisterItem() {
 
       <div className='action-wrapper'>
         <Link to='/registers/:id'>
-          <i class='fas fa-eye'></i>
+          <i className='fas fa-eye'></i>
         </Link>
         <Link to='/registers/edit/:id'>
-          <i class='fas fa-edit'></i>
+          <i className='fas fa-edit'></i>
         </Link>
         <Link>
-          <i class='fas fa-trash-alt'></i>
+          <i className='fas fa-trash-alt'></i>
         </Link>
       </div>
     </SCRegisterItem>

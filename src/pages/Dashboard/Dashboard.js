@@ -45,7 +45,7 @@ class Dashboard extends Component {
                 //if day in week 40 return info
                 return (
                   <p key={journey.createdAt}>
-                    {new Date(journey.startHour).getHours()}:{new Date(journey.startHour).getMinutes()}
+                    {journey.startHour}
                   </p>
                 );
               })}

@@ -43,7 +43,7 @@ class Dashboard extends Component {
         });
         response.data.map((journey) => {
           if (journey.date && dayjs(journey.date).isSame(dayjs(), 'day')) {
-            this.setState({
+            return this.setState({
               currentJourney: {
                 date: journey.date,
                 startHour: journey.startHour,
@@ -56,6 +56,7 @@ class Dashboard extends Component {
               },
             });
           }
+          return null;
         });
       })
       .catch((error) => console.error(error));
@@ -123,13 +124,19 @@ class Dashboard extends Component {
                 journey={currentJourney}
               />
             </div>
+            <div className="calendar-wrapper">
             <Calendar />
+            </div>
           </div>
           <div className='lists-wrapper'>
             <div className='registers-wrapper'>
-            <div className='list-header'>
-                <h2>Current week worklog</h2>
-                <p className='registers-counter'>Remaining days: XXX</p>
+              <div className='list-header'>
+                <h2>Worklog</h2>
+                <p className='registers-counter'>{`${dayjs()
+                  .day(0)
+                  .format('DD/MM/YYYY')} to ${dayjs()
+                  .day(6)
+                  .format('DD/MM/YYYY')}`}</p>
               </div>
               {registers.map((register) => {
                 if (dayjs(register.date).isSame(dayjs(), 'week')) {
@@ -141,11 +148,14 @@ class Dashboard extends Component {
                     />
                   );
                 }
+                return null;
               })}
             </div>
             <div className='offdays-wrapper'>
-            <div className='list-header'>
-                <h2>Current year off days and holidays</h2>
+              <div className='list-header'>
+                <h2>{`${dayjs()
+                  .day(0)
+                  .format('YYYY')} off days and holidays`}</h2>
                 <p className='offdays-counter'>Remaining days: XXX</p>
               </div>
               {offdays.map((offday) => {
@@ -158,6 +168,7 @@ class Dashboard extends Component {
                     />
                   );
                 }
+                return null;
               })}
             </div>
           </div>

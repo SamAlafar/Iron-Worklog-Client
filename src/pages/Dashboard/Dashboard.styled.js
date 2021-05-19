@@ -3,8 +3,21 @@ import styled from 'styled-components';
 const SCDashboard = styled.div`
   .top-section {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: space-evenly;
+    padding: 30px;
+
+    .add-register-container{
+
+    }
+
+    .calendar-wrapper {
+  
+      .react-calendar {
+        margin: 1rem 10rem;
+        background-color: rgba(247, 255, 247, 0.5);
+        border: 2px solid #f7fff7;
+      }
+    }
   }
   .lists-wrapper {
     display: flex;

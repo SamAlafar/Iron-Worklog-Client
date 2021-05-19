@@ -9,7 +9,6 @@ class RegisterDetails extends Component {
   render() {
     return (
       <>
-      {this.props.match.params.id}
         <Navbar />
         <SCRegisterDetails>
           <h1>My Register Details</h1>

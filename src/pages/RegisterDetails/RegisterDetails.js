@@ -9,11 +9,12 @@ class RegisterDetails extends Component {
   render() {
     return (
       <>
+      {this.props.match.params.id}
         <Navbar />
         <SCRegisterDetails>
           <h1>My Register Details</h1>
           <div className='action-button'>
-            <Link to='/registers/edit/:id'>
+            <Link to={`/registers/edit/${this.props.match.params.id}`}>
               <button>
                 <p>Edit</p>
               </button>

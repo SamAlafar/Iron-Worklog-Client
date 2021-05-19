@@ -5,44 +5,43 @@ import Calendar from 'react-calendar';
 import SCRegisters from './Registers.styled';
 import { withAuth } from '../../context/auth.context';
 import JourneyService from '../../services/journeys.service';
+import dayjs from 'dayjs';
 
 class Registers extends Component {
-  //INITIAL STATE OF THE REGISTERS OF EACH USER
   state = {
     registers: [],
   };
 
   journeyService = new JourneyService();
 
-  deleteRegister(id) {
-    this.journeyService
-    .deleteOne(id)
-    .then((response) => {
-      const registersCopy = 
-      this.state.registers.filter((register) => {
-        if(id !== register.id) {
-          return register;
-        }
-      })
-      this.setState({
-        registers: registersCopy
-      })
-    })
-  }
-
-  componentDidMount() {
-    //CALL API TO GET ALL REGISTERS OF USER AND UPDATE THE INITIAL STATE
+  refreshState() {
     this.journeyService
       .get()
       .then((response) => {
+        const sortedJourneys = response.data.sort(function (a, b) {
+          return dayjs(b.date) - dayjs(a.date);
+        });
+
         this.setState({
-          registers: response.data,
+          ...this.state.currentJourney,
+          registers: sortedJourneys,
         });
       })
       .catch((error) => console.error(error));
   }
 
+  componentDidMount() {
+    this.refreshState();
+  }
+
+  deleteRegister(id) {
+    this.journeyService.deleteOne(id).then((response) => {
+      this.refreshState();
+    });
+  }
+
   render() {
+    const { registers } = this.state;
     return (
       <>
         <Navbar />
@@ -50,8 +49,14 @@ class Registers extends Component {
           <h1>Registers</h1>
           <div className='registers-container'>
             <div className='registers-wrapper'>
-              {this.state.registers.map((register) => {
-                return <RegisterItem key={register.id} register={register} deleteRegister={() => this.deleteRegister(register.id)} />;
+              {registers.map((register) => {
+                return (
+                  <RegisterItem
+                    key={register.id}
+                    register={register}
+                    deleteRegister={() => this.deleteRegister(register.id)}
+                  />
+                );
               })}
             </div>
             <div className='calendar-wrapper'>

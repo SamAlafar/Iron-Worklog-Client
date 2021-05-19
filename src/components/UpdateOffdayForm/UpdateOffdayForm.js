@@ -4,6 +4,8 @@ import SCUpdateOffdayForm from './UpdateOffdayForm.styled';
 import Calendar from 'react-calendar';
 import { withRouter } from 'react-router-dom';
 import { withAuth } from '../../context/auth.context';
+import OffdaysService from '../../services/offdays.service';
+import dayjs from 'dayjs';
 
 const validators = {
   startDay: (value) => {
@@ -44,14 +46,39 @@ class UpdateOffdayForm extends Component {
         type: null,
       },
     };
+
+    this.offdaysService = new OffdaysService();
+  }
+  
+
+  componentDidMount() {    
+    this.offdaysService.getOne(this.props.match.params.id).then((response) => {
+      console.log(response.data)
+      this.setState({
+        fields: response.data,
+      });
+    });
   }
 
   handleSubmit(e) {
+    console.log(this.props.history);
     e.preventDefault();
-    console.log(this.state.fields);
-    // this.props.editOffday(this.state.fields);
-    // <Redirect to="/offdays" />
-    this.props.history.push('/offdays');
+    this.offdaysService.updateOne(this.props.match.params.id, this.state.fields)
+    .then(response => {
+      this.setState({
+        fields: {
+          startDay: new Date(),
+          endDay: new Date(),
+          type: '',
+        },
+        errors: {
+          startDay: null,
+          endDay: null,
+          type: null,
+        },
+      });
+      this.props.history.goBack();
+    })
   }
 
   handleChange(e) {
@@ -68,28 +95,15 @@ class UpdateOffdayForm extends Component {
     });
   }
 
-  handleStartDateChange = (date) => {
+  handleDateChange = (date, type) => {
     this.setState({
       fields: {
         ...this.state.fields,
-        startDay: date,
+        [type]: date,
       },
       errors: {
         ...this.state.errors,
-        startDay: validators.startDay(date),
-      },
-    });
-  };
-
-  handleEndDateChange = (date) => {
-    this.setState({
-      fields: {
-        ...this.state.fields,
-        endDay: date,
-      },
-      errors: {
-        ...this.state.errors,
-        endDay: validators.endDay(date),
+        [type]: validators[type](date),
       },
     });
   };
@@ -115,16 +129,16 @@ class UpdateOffdayForm extends Component {
             <label htmlFor='startDay'>First day:</label>
             <Calendar
               name='startDay'
-              value={fields.startDay}
-              onChange={this.handleStartDateChange}
+              value={ new Date(dayjs(fields.startDay).format('YYYY-MM-DD')) }
+              onChange={(date) => this.handleDateChange(date, 'startDay')}
             />
           </div>
           <div className='form-item'>
             <label htmlFor='endDay'>Last day:</label>
             <Calendar
               name='endDay'
-              value={fields.endDay}
-              onChange={this.handleEndDateChange}
+              value={ new Date(dayjs(fields.endDay).format('YYYY-MM-DD')) }            
+              onChange={(date) => this.handleDateChange(date, 'endDay')}
             />
           </div>
         </div>

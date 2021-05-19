@@ -16,7 +16,7 @@ class Navbar extends Component {
   logout = (e) => {
     e.preventDefault();
     this.props.logout();
-  }
+  };
 
   render() {
     return (
@@ -34,17 +34,21 @@ class Navbar extends Component {
             <NavLink to='/offdays' activeStyle>
               Off days
             </NavLink>
-            <p>
-              {`Welcome ${this.props.user.firstName}`}
-            </p>
-            <a href="/" onClick={(e) => this.showMenu(e)}>
+            <p>{`Welcome ${this.props.user.firstName}`}</p>
+            <a href='/' onClick={(e) => this.showMenu(e)}>
               <img src={this.props.user.profilePic} alt='User' />
             </a>
             {this.state.showUserMenu ? (
               <div className='user-menu'>
-                <NavLink to='/profile' activeClassName="active" >Profile</NavLink>
-                <NavLink to='/profile-edit' activeClassName="active" >Edit Profile</NavLink>
-                <NavLink to='/dashboard' onClick={(e)=>this.logout(e)}>Logout</NavLink>
+                <NavLink to='/profile' activeClassName='active'>
+                  Profile
+                </NavLink>
+                <NavLink to='/profile-edit' activeClassName='active'>
+                  Edit Profile
+                </NavLink>
+                <NavLink to='/dashboard' onClick={(e) => this.logout(e)}>
+                  Logout
+                </NavLink>
               </div>
             ) : null}
           </div>

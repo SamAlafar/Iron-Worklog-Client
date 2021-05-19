@@ -27,7 +27,7 @@ const App = () => {
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/profile-edit' component={ProfileEdit} />
         <PrivateRoute exact path='/offdays' component={Offdays} />
-        <PrivateRoute exact path='/offdays/edit' component={OffdaysEdit} />
+        <PrivateRoute exact path='/offdays/edit/:id' component={OffdaysEdit} />
         <PrivateRoute exact path='/registers/:id' component={RegisterDetails} />
         <PrivateRoute exact path='/registers/edit/:id' component={RegisterEdit} />
       </Switch>

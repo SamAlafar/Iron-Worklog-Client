@@ -22,7 +22,9 @@ class Navbar extends Component {
     return (
       <>
         <SCNavbar>
-          <img src='/img/navbar-logo2.png' alt='Iron Worklog Logo' />
+          <NavLink to='/dashboard' activeStyle>
+            <img src='/img/navbar-logo2.png' alt='Iron Worklog Logo' />
+          </NavLink>
 
           <div className='nav-menu'>
             <NavLink to='/dashboard' activeStyle>

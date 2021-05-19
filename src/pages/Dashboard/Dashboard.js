@@ -13,34 +13,71 @@ class Dashboard extends Component {
   state = {
     registers: [],
     offdays: [],
+    currentJourney: {
+      date: dayjs(),
+      startHour: null,
+      endHour: null,
+      startBreak: null,
+      endBreak: null,
+      morningStandup: '',
+      eveningStandup: '',
+      id: null,
+    },
   };
   // INSTANCE OF SERVICES TO CALL AND GET THE INFO
   journeyService = new JourneyService();
 
-  componentDidMount() {
-    // API CALLS TO GET REGISTERS AND OFFDAYS OF THE USER LOGGED IN
+  refreshState() {
     this.journeyService
       .get()
       .then((response) => {
         this.setState({
+          ...this.state.currentJourney,
           registers: response.data,
+        });
+        response.data.map((journey) => {
+          if (journey.date && dayjs(journey.date).isSame(dayjs(), 'day')) {
+            this.setState({
+              currentJourney: {
+                date: journey.date,
+                startHour: journey.startHour,
+                endHour: journey.endHour,
+                startBreak: journey.startBreak,
+                endBreak: journey.endBreak,
+                morningStandup: journey.morningStandup,
+                eveningStandup: journey.eveningStandup,
+                id: journey.id,
+              },
+            });
+          }
         });
       })
       .catch((error) => console.error(error));
   }
 
+  refreshJourneyState() {
+    this.setState({
+      currentJourney: {
+        date: dayjs(),
+        startHour: null,
+        endHour: null,
+        startBreak: null,
+        endBreak: null,
+        morningStandup: '',
+        eveningStandup: '',
+        id: null,
+      },
+    });
+  }
+
+  componentDidMount() {
+    this.refreshState();
+  }
+
   deleteRegister(id) {
-    console.log(id);
-    this.journeyService.deleteOne(id).then((response) => {
-      const registersCopy = this.state.registers.filter((register) => {
-        if (id !== register.id) {
-          return register;
-        }
-      });
-      console.log(registersCopy)
-       this.setState({
-        registers: registersCopy,
-      }); 
+    this.journeyService.deleteOne(id).then(() => {
+      this.refreshState();
+      this.refreshJourneyState();
     });
   }
 
@@ -52,7 +89,10 @@ class Dashboard extends Component {
           <div className='top-section'>
             {/* CREATE REGISTER FORM COMPONENT */}
             <div className='add-register-container'>
-              <JourneyCreateForm {...this.state.registers}/>
+              <JourneyCreateForm
+                refreshState={() => this.refreshState()}
+                journey={this.state.currentJourney}
+              />
             </div>
             <Calendar />
           </div>

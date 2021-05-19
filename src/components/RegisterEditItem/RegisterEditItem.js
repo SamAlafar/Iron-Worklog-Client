@@ -165,7 +165,6 @@ class RegisterEditItem extends Component {
     const { fields } = this.state;
     return (
       <>
-        {this.props.match.params.id}
         <SCRegisterEditItem onSubmit={(e) => this.handleSubmit(e)}>
           <div className='details-wrapper'>
             <div className='work-hour'>

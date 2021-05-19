@@ -5,12 +5,12 @@ export const SCFooter = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgb(235, 195, 64);
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 8vh;
+  position: fixed;
   background: #f7fff7;
+  padding: 1.5rem;
 `;
 
 export const SCFooterList = styled.div`

@@ -8,13 +8,13 @@ class JourneyCreateForm extends Component {
     super(props);
     this.state = {
       fields: {
-        date: dayjs(),
-        startHour: null,
-        endHour: null,
-        startBreak: null,
-        endBreak: null,
-        morningStandup: '',
-        eveningStandup: '',
+        date: this.props.journey.date,
+        startHour: this.props.journey.startHour,
+        endHour: this.props.journey.endHour,
+        startBreak: this.props.journey.startBreak,
+        endBreak: this.props.journey.endBreak,
+        morningStandup: this.props.journey.morningStandup,
+        eveningStandup: this.props.journey.eveningStandup,
       },
       errors: {
         startHour: null,
@@ -24,23 +24,36 @@ class JourneyCreateForm extends Component {
         morningStandup: null,
         eveningStandup: null,
       },
-      currentJourneyId: null,
+      currentJourneyId: this.props.journey.id,
     };
 
     this.journeyService = new JourneyService();
   }
 
+  componentWillReceiveProps(props) {
+    this.setState({
+      fields: {
+        date: props.journey.date,
+        startHour: props.journey.startHour,
+        endHour: props.journey.endHour,
+        startBreak: props.journey.startBreak,
+        endBreak: props.journey.endBreak,
+        morningStandup: props.journey.morningStandup,
+        eveningStandup: props.journey.eveningStandup,
+      },
+      currentJourneyId: props.journey.id,
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.fields);
-    //llamada a DB para actualizar el valor
     this.journeyService
       .updateOne(this.state.currentJourneyId, {
         morningStandup: this.state.fields.morningStandup,
         eveningStandup: this.state.fields.eveningStandup,
       })
       .then((response) => {
-        console.log(response.data);
+        this.props.refreshState();
       });
   }
 
@@ -48,7 +61,6 @@ class JourneyCreateForm extends Component {
     e.preventDefault();
     const type = e.target.id;
     const hour = dayjs().format('HH:mm').toString();
-    console.log(hour);
     this.setState(
       {
         fields: {
@@ -65,13 +77,15 @@ class JourneyCreateForm extends Component {
               this.setState({
                 currentJourneyId: response.data.id,
               });
+
+              this.props.refreshState();
             })
             .catch((error) => console.error(error));
         } else {
           this.journeyService
             .updateOne(this.state.currentJourneyId, this.state.fields)
             .then((response) => {
-              console.log(response.data);
+              this.props.refreshState();
             })
             .catch((error) => console.error(error));
         }
@@ -87,33 +101,6 @@ class JourneyCreateForm extends Component {
         [name]: value,
       },
     });
-  }
-
-  componentDidMount() {
-    //primero hara llamada al journeyservice y busca si existe algun journey para el dia de hoy
-    this.journeyService.get().then((response) => {
-      console.log(response.data);
-      response.data.map((journey) => {
-        if (journey.date && dayjs(journey.date).isSame(dayjs(), 'day')) {
-          console.log(journey.date);
-          this.setState({
-            fields: {
-              date: journey.date,
-              startHour: journey.startHour,
-              endHour: journey.endHour,
-              startBreak: journey.startBreak,
-              endBreak: journey.endBreak,
-              morningStandup: journey.morningStandup,
-              eveningStandup: journey.eveningStandup,
-            },
-            currentJourneyId: journey.id,
-          });
-        } else {
-          console.log('else');
-        }
-      });
-    });
-    //si encuentra actualizara con id del registro si no hace nada
   }
 
   render() {

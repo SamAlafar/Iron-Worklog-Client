@@ -15,7 +15,6 @@ class Registers extends Component {
   journeyService = new JourneyService();
 
   deleteRegister(id) {
-    console.log(id)
     this.journeyService
     .deleteOne(id)
     .then((response) => {
@@ -39,7 +38,6 @@ class Registers extends Component {
         this.setState({
           registers: response.data,
         });
-        console.log(this.state.registers);
       })
       .catch((error) => console.error(error));
   }

@@ -22,7 +22,7 @@ export default function RegisterItem({register, deleteRegister}) {
         <Link to={`/registers/edit/${register.id}`}>
           <i className='fas fa-edit'></i>
         </Link>
-        <Link onClick={()=>deleteRegister(register.id)}>
+        <Link onClick={deleteRegister}>
           <i className='fas fa-trash-alt'></i>
         </Link>
       </div>

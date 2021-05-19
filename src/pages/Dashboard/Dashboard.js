@@ -5,6 +5,7 @@ import { withAuth } from '../../context/auth.context';
 import OffdayItem from '../../components/OffdayItem/OffdayItem';
 import Calendar from 'react-calendar';
 import JourneyService from '../../services/journeys.service';
+import OffdaysService from '../../services/offdays.service';
 import JourneyCreateForm from '../../components/JourneyCreateForm/JourneyCreateForm';
 import dayjs from 'dayjs';
 import RegisterItem from '../../components/RegisterItem/RegisterItem';
@@ -26,14 +27,19 @@ class Dashboard extends Component {
   };
   // INSTANCE OF SERVICES TO CALL AND GET THE INFO
   journeyService = new JourneyService();
+  offdaysService = new OffdaysService();
 
-  refreshState() {
+  refreshRegistersState() {
     this.journeyService
       .get()
       .then((response) => {
+        const sortedJourneys = response.data.sort(function (a, b) {
+          return dayjs(b.date) - dayjs(a.date);
+        });
+
         this.setState({
           ...this.state.currentJourney,
-          registers: response.data,
+          registers: sortedJourneys,
         });
         response.data.map((journey) => {
           if (journey.date && dayjs(journey.date).isSame(dayjs(), 'day')) {
@@ -70,36 +76,62 @@ class Dashboard extends Component {
     });
   }
 
+  refreshOffdaysState() {
+    this.offdaysService
+      .get()
+      .then((response) => {
+        const sortedOffdays = response.data.sort(function (a, b) {
+          return dayjs(b.startDay) - dayjs(a.startDay);
+        });
+
+        this.setState({
+          offdays: sortedOffdays,
+        });
+      })
+      .catch((err) => console.error(err));
+  }
+
   componentDidMount() {
-    this.refreshState();
+    console.log('componentDidMount');
+    this.refreshRegistersState();
+    this.refreshOffdaysState();
   }
 
   deleteRegister(id) {
     this.journeyService.deleteOne(id).then(() => {
-      this.refreshState();
+      this.refreshRegistersState();
       this.refreshJourneyState();
     });
   }
 
+  deleteOffday(id) {
+    this.offdaysService.deleteOne(id).then(() => {
+      this.refreshOffdaysState();
+    });
+  }
+
   render() {
+    const { registers, currentJourney, offdays } = this.state;
     return (
       <>
         <Navbar />
         <SCDashboard>
           <div className='top-section'>
-            {/* CREATE REGISTER FORM COMPONENT */}
             <div className='add-register-container'>
               <JourneyCreateForm
-                refreshState={() => this.refreshState()}
-                journey={this.state.currentJourney}
+                refreshState={() => this.refreshRegistersState()}
+                journey={currentJourney}
               />
             </div>
             <Calendar />
           </div>
           <div className='lists-wrapper'>
-            <div className='register-container'>
-              {/* MAP REGISTERS OF CURRENT WEEK + DISPLAY REGISTER ITEM IN A LIST */}
-              {this.state.registers.map((register) => {
+            <div className='registers-wrapper'>
+            <div className='list-header'>
+                <h2>Current week worklog</h2>
+                <p className='registers-counter'>Remaining days: XXX</p>
+              </div>
+              {registers.map((register) => {
                 if (dayjs(register.date).isSame(dayjs(), 'week')) {
                   return (
                     <RegisterItem
@@ -111,9 +143,22 @@ class Dashboard extends Component {
                 }
               })}
             </div>
-            <div className='offdays-container'>
-              {/* MAP OFFDAYS OF CURRENT YEAR + DISPLAY OFFDAYS ITEM IN A LIST */}
-              <OffdayItem />
+            <div className='offdays-wrapper'>
+            <div className='list-header'>
+                <h2>Current year off days and holidays</h2>
+                <p className='offdays-counter'>Remaining days: XXX</p>
+              </div>
+              {offdays.map((offday) => {
+                if (dayjs(offday.startDay).isSame(dayjs(), 'year')) {
+                  return (
+                    <OffdayItem
+                      key={offday.id}
+                      offday={offday}
+                      deleteOffday={() => this.deleteOffday(offday.id)}
+                    />
+                  );
+                }
+              })}
             </div>
           </div>
         </SCDashboard>

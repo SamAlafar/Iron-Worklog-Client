@@ -5,7 +5,7 @@ import AddOffdayForm from '../../components/AddOffdayForm/AddOffdayForm';
 import OffdayItem from '../../components/OffdayItem/OffdayItem';
 import { withAuth } from '../../context/auth.context';
 import OffdaysService from '../../services/offdays.service';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 class Offdays extends Component {
   state = {
@@ -60,7 +60,10 @@ class Offdays extends Component {
             </button>
           </div>
           {showAddForm ? (
-            <AddOffdayForm refreshState={() => this.refreshState()} handleShowAdd={() => this.handleShowAdd()}/>
+            <AddOffdayForm
+              refreshState={() => this.refreshState()}
+              handleShowAdd={() => this.handleShowAdd()}
+            />
           ) : (
             ''
           )}
@@ -80,6 +83,7 @@ class Offdays extends Component {
                     />
                   );
                 }
+                return null;
               })}
             </div>
             {/* ILLNESS / OFFDAYS COMPONENT */}
@@ -98,6 +102,7 @@ class Offdays extends Component {
                     />
                   );
                 }
+                return null;
               })}
             </div>
           </div>

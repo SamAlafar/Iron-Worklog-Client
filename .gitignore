@@ -18,6 +18,7 @@
 .env.development
 .env.test.local
 .env.production
+.auth.context.js.swp
 
 npm-debug.log*
 yarn-debug.log*

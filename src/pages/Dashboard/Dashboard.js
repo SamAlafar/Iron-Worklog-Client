@@ -6,7 +6,6 @@ import OffdayItem from '../../components/OffdayItem/OffdayItem';
 import Calendar from 'react-calendar';
 import JourneyService from '../../services/journeys.service';
 import JourneyCreateForm from '../../components/JourneyCreateForm/JourneyCreateForm';
-import JourneyService from '../../services/journeys.service';
 import dayjs from 'dayjs';
 import RegisterItem from '../../components/RegisterItem/RegisterItem';
 
@@ -34,15 +33,14 @@ class Dashboard extends Component {
     console.log(id);
     this.journeyService.deleteOne(id).then((response) => {
       const registersCopy = this.state.registers.filter((register) => {
-        console.log(!id === register.id);
-        if (!id === register.id) {
+        if (id !== register.id) {
           return register;
         }
       });
       console.log(registersCopy)
-/*       this.setState({
+       this.setState({
         registers: registersCopy,
-      }); */
+      }); 
     });
   }
 
@@ -54,7 +52,7 @@ class Dashboard extends Component {
           <div className='top-section'>
             {/* CREATE REGISTER FORM COMPONENT */}
             <div className='add-register-container'>
-              <JourneyCreateForm />
+              <JourneyCreateForm {...this.state.registers}/>
             </div>
             <Calendar />
           </div>

@@ -21,8 +21,7 @@ class Registers extends Component {
     .then((response) => {
       const registersCopy = 
       this.state.registers.filter((register) => {
-        console.log(!id === register.id)
-        if(!id === register.id) {
+        if(id !== register.id) {
           return register;
         }
       })

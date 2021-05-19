@@ -24,7 +24,6 @@ class RegisterDetailItem extends Component {
     this.journeyService = new JourneyService();
   }
   componentDidMount() {
-    console.log(this.props);
     this.journeyService.getOne(this.props.match.params.id).then((response) => {
       this.setState({
         fields: response.data,

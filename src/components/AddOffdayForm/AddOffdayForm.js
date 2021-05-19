@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import SCAddOffdayForm from './AddOffdayForm.styled';
 import Calendar from 'react-calendar';
+import OffdaysService from '../../services/offdays.service';
 
 const validators = {
   startDay: (value) => {
@@ -42,24 +43,31 @@ export default class AddOffdayForm extends Component {
         type: null,
       },
     };
+
+    this.offdaysService = new OffdaysService();
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.fields);
-    // this.props.createOffday(this.state.fields);
-    this.setState({
-      fields: {
-        startDay: new Date(),
-        endDay: new Date(),
-        type: '',
-      },
-      errors: {
-        startDay: null,
-        endDay: null,
-        type: null,
-      },
-    });
+    this.offdaysService.create(this.state.fields)
+    .then(response => {
+      this.setState({
+        fields: {
+          startDay: new Date(),
+          endDay: new Date(),
+          type: '',
+        },
+        errors: {
+          startDay: null,
+          endDay: null,
+          type: null,
+        },
+      });
+
+      this.props.handleShowAdd();
+      this.props.refreshState();
+    })
+    
   }
 
   handleChange(e) {
@@ -76,28 +84,15 @@ export default class AddOffdayForm extends Component {
     });
   }
 
-  handleStartDateChange = (date) => {
+  handleDateChange = (date, type) => {
     this.setState({
       fields: {
         ...this.state.fields,
-        startDay: date,
+        [type]: date,
       },
       errors: {
         ...this.state.errors,
-        startDay: validators.startDay(date),
-      },
-    });
-  };
-
-  handleEndDateChange = (date) => {
-    this.setState({
-      fields: {
-        ...this.state.fields,
-        endDay: date,
-      },
-      errors: {
-        ...this.state.errors,
-        endDay: validators.endDay(date),
+        [type]: validators[type](date),
       },
     });
   };
@@ -124,7 +119,7 @@ export default class AddOffdayForm extends Component {
             <Calendar
               name='startDay'
               value={fields.startDay}
-              onChange={this.handleStartDateChange}
+              onChange={(date) => this.handleDateChange(date, 'startDay')}
             />
           </div>
           <div className='form-item'>
@@ -132,7 +127,7 @@ export default class AddOffdayForm extends Component {
             <Calendar
               name='endDay'
               value={fields.endDay}
-              onChange={this.handleEndDateChange}
+              onChange={(date) => this.handleDateChange(date, 'endDay')}
             />
           </div>
         </div>

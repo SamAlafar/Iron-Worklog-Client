@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SCJourneyCreateForm from './JourneyCreateForm.styled';
 import { withAuth } from '../../context/auth.context';
 import JourneyService from '../../services/journeys.service';
 import dayjs from 'dayjs';
@@ -105,51 +106,85 @@ class JourneyCreateForm extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.fields.startHour ? (
-          <button
-            id='endHour'
-            onClick={(e) => this.onClick(e)}
-            disabled={this.state.fields.endHour}>
-            End Journey
-          </button>
-        ) : (
-          <button id='startHour' onClick={(e) => this.onClick(e)}>
-            Start Journey
-          </button>
-        )}
-        {this.state.fields.startBreak ? (
-          <button
-            id='endBreak'
-            onClick={(e) => this.onClick(e)}
-            disabled={this.state.fields.endHour || this.state.fields.endBreak}>
-            End Lunch Time
-          </button>
-        ) : (
-          <button
-            id='startBreak'
-            onClick={(e) => this.onClick(e)}
-            disabled={this.state.fields.endHour}>
-            Start Lunch Time
-          </button>
-        )}
+      <SCJourneyCreateForm>
+        <div className='button-actions'>
+          <div>
+            <button
+              className='btn-submit'
+              id='startHour'
+              onClick={(e) => this.onClick(e)}
+              disabled={this.state.fields.startHour}>
+              Start {this.state.fields.startHour}
+            </button>
+
+            <button
+              className='btn-submit end-button'
+              id='endHour'
+              onClick={(e) => this.onClick(e)}
+              disabled={
+                !this.state.fields.startHour || this.state.fields.endHour
+              }>
+              End {this.state.fields.endHour}
+            </button>
+          </div>
+
+          <div>
+            <button
+              className='btn-submit'
+              id='startBreak'
+              onClick={(e) => this.onClick(e)}
+              disabled={
+                !this.state.fields.startHour ||
+                this.state.fields.endHour ||
+                this.state.fields.startBreak
+              }>
+              Start Break {this.state.fields.startBreak}
+            </button>
+
+            <button
+              className='btn-submit end-button'
+              id='endBreak'
+              onClick={(e) => this.onClick(e)}
+              disabled={
+                !this.state.fields.startHour ||
+                !this.state.fields.startBreak ||
+                this.state.fields.endHour ||
+                this.state.fields.endBreak
+              }>
+              End Break {this.state.fields.endBreak}
+            </button>
+          </div>
+        </div>
 
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <textarea
-            name='morningStandup'
-            value={this.state.fields.morningStandup}
-            onChange={(e) => this.onChange(e)}
-            disabled={this.state.fields.endHour}></textarea>
-          <textarea
-            name='eveningStandup'
-            value={this.state.fields.eveningStandup}
-            onChange={(e) => this.onChange(e)}
-            disabled={this.state.fields.endHour}></textarea>
-          <button type='submit' disabled={this.state.fields.endHour}>
+          <div>
+            <div className='form-group'>
+              <label htmlFor='morningStandup'>Morning standup</label>
+              <textarea
+                name='morningStandup'
+                value={this.state.fields.morningStandup}
+                onChange={(e) => this.onChange(e)}
+                disabled={this.state.fields.endHour}></textarea>
+            </div>
+            <div className='form-group'>
+              <label htmlFor='eveningStandup'>Evening standup</label>
+              <textarea
+                name='eveningStandup'
+                value={this.state.fields.eveningStandup}
+                onChange={(e) => this.onChange(e)}
+                disabled={this.state.fields.endHour}></textarea>
+            </div>
+          </div>
+          <button
+            className='btn-submit'
+            type='submit'
+            disabled={
+              !this.state.fields.startHour || this.state.fields.endHour
+            }>
             Add
           </button>
         </form>
-      </div>
+      </SCJourneyCreateForm>
     );
   }
 }

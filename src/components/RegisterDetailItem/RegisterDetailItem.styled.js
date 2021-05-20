@@ -55,8 +55,12 @@ const SCRegisterDetailItem = styled.div`
     justify-content: center;
     padding-top: 50px;
     label {
+      display: flex;
+      flex-direction: column;
       text-decoration: underline;
       text-align: center;
+      padding-bottom: 10px;
+      
     }
     p {
     margin-right: 20px;
@@ -67,6 +71,16 @@ const SCRegisterDetailItem = styled.div`
     background-color: rgba(247, 255, 247, 0.4);
     border-radius: 5px;
   }
+        textarea {
+      text-align: left;
+      margin-right: 20px;
+      padding-top: 10px;
+      border: 2px solid #f7fff7;
+      width: 350px;
+      height: 150px;
+      background-color: rgba(247, 255, 247, 0.4);
+      border-radius: 5px;
+      margin-bottom: 5px;
   }
 `;
 

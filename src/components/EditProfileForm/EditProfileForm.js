@@ -78,10 +78,8 @@ class EditProfileForm extends Component {
     e.preventDefault();
     const uploadData = new FormData();
     Object.keys(this.state.fields).forEach((key) => {
-      console.log(this.state.fields[key]);
       uploadData.append(key, this.state.fields[key]);
     });
-    console.log(uploadData);
     this.props.edit(uploadData);
     this.props.history.push('/profile');
   }

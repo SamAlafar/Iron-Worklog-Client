@@ -93,7 +93,6 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     this.refreshRegistersState();
     this.refreshOffdaysState();
   }

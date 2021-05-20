@@ -53,7 +53,6 @@ class UpdateOffdayForm extends Component {
 
   componentDidMount() {    
     this.offdaysService.getOne(this.props.match.params.id).then((response) => {
-      console.log(response.data)
       this.setState({
         fields: response.data,
       });
@@ -61,7 +60,6 @@ class UpdateOffdayForm extends Component {
   }
 
   handleSubmit(e) {
-    console.log(this.props.history);
     e.preventDefault();
     this.offdaysService.updateOne(this.props.match.params.id, this.state.fields)
     .then(response => {

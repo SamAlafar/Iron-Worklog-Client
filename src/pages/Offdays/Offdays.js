@@ -31,7 +31,6 @@ class Offdays extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     this.refreshState();
   }
 

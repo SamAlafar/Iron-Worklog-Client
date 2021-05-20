@@ -20,6 +20,7 @@ const SCHome = styled.div`
 
       img {
         height: 350px;
+        box-shadow: 1px 1px 20px 2px #1a535c;
       }
     }
     .home-logo {

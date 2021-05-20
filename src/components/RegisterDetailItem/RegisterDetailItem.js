@@ -57,12 +57,12 @@ class RegisterDetailItem extends Component {
           </div>
           <div className='standup-wrapper'>
             <div>
-              <label>Prework Standup</label>
+              <label>Morning Standup</label>
               <textarea disabled value={this.state.fields.morningStandup}>
               </textarea>
             </div>
             <div>
-              <label>Afterwork Standup</label>
+              <label>Evening Standup</label>
               <textarea disabled value={this.state.fields.eveningStandup}>
               </textarea>
             </div>

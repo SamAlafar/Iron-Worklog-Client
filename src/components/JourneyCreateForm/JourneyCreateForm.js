@@ -159,7 +159,7 @@ class JourneyCreateForm extends Component {
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <div className='form-group'>
-              <label htmlFor='morningStandup'>Morning standup</label>
+              <label htmlFor='morningStandup'>Morning Standup</label>
               <textarea
                 name='morningStandup'
                 value={this.state.fields.morningStandup}
@@ -167,7 +167,7 @@ class JourneyCreateForm extends Component {
                 disabled={this.state.fields.endHour}></textarea>
             </div>
             <div className='form-group'>
-              <label htmlFor='eveningStandup'>Evening standup</label>
+              <label htmlFor='eveningStandup'>Evening Standup</label>
               <textarea
                 name='eveningStandup'
                 value={this.state.fields.eveningStandup}

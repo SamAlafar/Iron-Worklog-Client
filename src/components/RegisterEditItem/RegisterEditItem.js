@@ -218,14 +218,14 @@ class RegisterEditItem extends Component {
 
           <div className='standup-wrapper'>
             <div>
-              <label>Prework Standup</label>
+              <label>Morning Standup</label>
               <textarea
                 name='morningStandup'
                 value={this.state.fields.morningStandup}
                 onChange={(e) => this.handleChange(e)}></textarea>
             </div>
             <div>
-              <label>Afterwork Standup</label>
+              <label>Evening Standup</label>
               <textarea
                 name='eveningStandup'
                 value={this.state.fields.eveningStandup}

@@ -19,12 +19,12 @@ export default function UserInfo({ user }) {
         <div className='details-wrapper'>
           <label>
             Employee Birth Date
-            <p>{dayjs(user.birthDate).format('DD/MM/YYYY')}</p>
+            <p>{user.birthDate ? dayjs(user.birthDate).format('DD/MM/YYYY') : '-'}</p>
           </label>
           <label>
             Contract Start Date
             <p>
-              {dayjs(user.startContract).format('DD/MM/YYYY')}
+              {user.startContract ? dayjs(user.startContract).format('DD/MM/YYYY') : '-'}
             </p>
           </label>
         </div>

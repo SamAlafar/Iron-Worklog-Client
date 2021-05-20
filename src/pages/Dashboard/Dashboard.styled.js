@@ -23,6 +23,7 @@ const SCDashboard = styled.div`
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+    width: 100%;
 
     h2 {
       font-size: 1.8rem;
@@ -45,6 +46,13 @@ const SCDashboard = styled.div`
       .offday-item, .register-item{
         margin-bottom: 10px;
       }
+    }
+
+    .register-wrapper {
+      width: 65%;
+    }
+    .offdays-wrapper {
+      width: 35%;
     }
   }
 `;

@@ -12,10 +12,10 @@ const Home = () => {
       />
       <section>
         <div className="text-container">
-          <h1>TITULO</h1>
-          <h2>SUBTITULO (CATCHPHRASE)</h2>
+          <h1>IRON WORKLOG 🦾</h1>
+          <h2>The fastest way to track the working hours!!!</h2>
         </div>
-        <img src='/img/img-prueba.png' alt='App screenshot' />
+        <img src='/img/IronWorklog-Sample.png' alt='App screenshot' />
       </section>
 
       <div className='home-button-container'>

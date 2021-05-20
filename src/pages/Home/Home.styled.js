@@ -6,6 +6,7 @@ const SCHome = styled.div`
 
     h1 {
       font-size: 3rem;
+      padding-bottom: 2rem;
     }
     h2 {
       font-size: 2.5rem;
@@ -15,13 +16,14 @@ const SCHome = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      padding-bottom: 20px;
 
       img {
         height: 350px;
       }
     }
     .home-logo {
-      width: 50vw;
+      width: 50%;
     }
     .home-button-container {
       text-align: center;

@@ -17,7 +17,7 @@ const SCOffdayItem = styled.div`
     display: flex;
 
     p {
-      padding-right: 1rem;
+      padding-right: 2.5rem;
     }
   }
 

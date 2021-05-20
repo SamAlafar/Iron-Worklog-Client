@@ -7,13 +7,29 @@ export default function OffdayItem({ offday, deleteOffday }) {
   return (
     <SCOffdayItem className='offday-item'>
       <div className='days-wrapper'>
-        <span>{}</span>
-        <p>Start day: {dayjs(offday.startDay).format('DD/MM/YYYY')}</p>
-        <p>End day:{dayjs(offday.endDay).format('DD/MM/YYYY')}</p>
+        <p>
+          {offday.type === 'holidays' ? (
+            <i class='fas fa-umbrella-beach'></i>
+          ) : (
+            offday.type === 'sickness' ?
+            <i class="fas fa-head-side-mask"></i>
+            :
+            offday.type === 'off-days' ?
+            <i class="fas fa-bell-slash"></i>
+            : ''
+          )}
+        </p>
+        <p>
+          <i class='far fa-calendar-check'></i>:{' '}
+          {dayjs(offday.startDay).format('DD/MM/YYYY')}
+        </p>
+        <p>
+          <i class='far fa-calendar-times'></i>:
+          {dayjs(offday.endDay).format('DD/MM/YYYY')}
+        </p>
       </div>
       <div className='action-wrapper'>
-        <Link
-          to={`/offdays/edit/${offday.id}`}>
+        <Link to={`/offdays/edit/${offday.id}`}>
           <i className='fas fa-edit'></i>
         </Link>
         <Link onClick={deleteOffday}>

@@ -38,7 +38,10 @@ const SCNavbar = styled.nav`
     }
 
     img {
-      width: 65px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: fill;
     }
 
     .user-menu {
@@ -52,7 +55,7 @@ const SCNavbar = styled.nav`
 
       a:hover {
         background-color: #1a535c;
-      }      
+      }
     }
   }
 `;

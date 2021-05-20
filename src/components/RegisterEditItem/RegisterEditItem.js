@@ -89,9 +89,7 @@ class RegisterEditItem extends Component {
       .then((response) => {
         this.props.history.goBack();
       })
-      .catch((error) => console.error(error))
-      ;
-
+      .catch((error) => console.error(error));
   }
 
   handleStartHourChange = (time) => {
@@ -147,7 +145,7 @@ class RegisterEditItem extends Component {
   };
 
   handleChange = (e) => {
-      const { name, value } = e.target;
+    const { name, value } = e.target;
     this.setState({
       fields: {
         ...this.state.fields,
@@ -160,7 +158,6 @@ class RegisterEditItem extends Component {
     });
   };
 
-
   render() {
     const { fields } = this.state;
     return (
@@ -168,65 +165,78 @@ class RegisterEditItem extends Component {
         <SCRegisterEditItem onSubmit={(e) => this.handleSubmit(e)}>
           <div className='details-wrapper'>
             <div className='work-hour'>
-              <TimePicker
-                name='startHour'
-                value={this.state.fields.startHour}
-                onChange={(e) => this.handleStartHourChange(e)}
-                disableClock
-                format='HH:mm'
-              />
               <p className='start-style'>
-                Start Hour: {this.state.fields.startHour}
+                Start Hour:{' '}
+                <TimePicker
+                  className='time-picker'
+                  name='startHour'
+                  value={this.state.fields.startHour}
+                  onChange={(e) => this.handleStartHourChange(e)}
+                  disableClock
+                  format='HH:mm'
+                />
               </p>
-              <TimePicker
-                name='endHour'
-                value={this.state.fields.endHour}
-                onChange={(e) => this.handleEndHourChange(e)}
-                disableClock
-                format='HH:mm'
-              />
-              <p className='end-style'>End Hour: {this.state.fields.endHour}</p>
+
+              <p className='end-style'>
+                End Hour:{' '}
+                <TimePicker
+                  className='time-picker-end'
+                  name='endHour'
+                  value={this.state.fields.endHour}
+                  onChange={(e) => this.handleEndHourChange(e)}
+                  disableClock
+                  format='HH:mm'
+                />
+              </p>
             </div>
             <div className='break-hour'>
-              <TimePicker
-                name='startBreak'
-                value={this.state.fields.startBreak}
-                onChange={(e) => this.handleBreakStartHourChange(e)}
-                disableClock
-                format='HH:mm'
-              />
               <p className='start-style'>
-                Start Break: {this.state.fields.startBreak}
+                Start Break:{' '}
+                <TimePicker
+                  className='time-picker'
+                  name='startBreak'
+                  value={this.state.fields.startBreak}
+                  onChange={(e) => this.handleBreakStartHourChange(e)}
+                  disableClock
+                  format='HH:mm'
+                />
               </p>
-              <TimePicker
-                name='endBreak'
-                value={this.state.fields.endBreak}
-                onChange={(e) => this.handleBreakEndHourChange(e)}
-                disableClock
-                format='HH:mm'
-              />
+
               <p className='end-style'>
-                End Break: {this.state.fields.endBreak}
+                End Break:{' '}
+                <TimePicker
+                  className='time-picker-end'
+                  name='endBreak'
+                  value={this.state.fields.endBreak}
+                  onChange={(e) => this.handleBreakEndHourChange(e)}
+                  disableClock
+                  format='HH:mm'
+                />
               </p>
             </div>
           </div>
-          <div className='standup-label'>
-            <label>Prework Standup</label>
-            <label>Afterwork Standup</label>
-          </div>
+
           <div className='standup-wrapper'>
-            <textarea
-              name='morningStandup'
-              value={this.state.fields.morningStandup}
-              onChange={(e) => this.handleChange(e)}></textarea>
-            <textarea
-              name='eveningStandup'
-              value={this.state.fields.eveningStandup}
-              onChange={(e) => this.handleChange(e)}></textarea>
+            <div>
+              <label>Prework Standup</label>
+              <textarea
+                name='morningStandup'
+                value={this.state.fields.morningStandup}
+                onChange={(e) => this.handleChange(e)}></textarea>
+            </div>
+            <div>
+              <label>Afterwork Standup</label>
+              <textarea
+                name='eveningStandup'
+                value={this.state.fields.eveningStandup}
+                onChange={(e) => this.handleChange(e)}></textarea>
+            </div>
           </div>
-          <button type='submit' className='btn-submit'>
-            Save changes
-          </button>
+            <div>
+              <button type='submit' className='btn-submit'>
+                Save changes
+              </button>
+            </div>
         </SCRegisterEditItem>
       </>
     );

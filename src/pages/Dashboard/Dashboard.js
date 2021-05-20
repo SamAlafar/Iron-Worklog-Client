@@ -155,8 +155,8 @@ class Dashboard extends Component {
               <div className='list-header'>
                 <h2>{`${dayjs()
                   .day(0)
-                  .format('YYYY')} off days and holidays`}</h2>
-                <p className='offdays-counter'>Remaining days: XXX</p>
+                  .format('YYYY')}`}</h2>
+                <p className='offdays-counter'>Holidays, sickdays and days off</p>
               </div>
               {offdays.map((offday) => {
                 if (dayjs(offday.startDay).isSame(dayjs(), 'year')) {

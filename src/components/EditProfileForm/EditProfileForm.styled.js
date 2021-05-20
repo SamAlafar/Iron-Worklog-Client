@@ -7,7 +7,6 @@ const SCEditProfileForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   input {
     padding-left: 5px;
     font-size: 1.5rem;
@@ -25,7 +24,6 @@ const SCEditProfileForm = styled.form`
   .picture-wrapper {
     padding-top: 20px;
   }
-
   .calendar-wrapper {
     display: flex;
     align-items: center;
@@ -54,7 +52,9 @@ const SCEditProfileForm = styled.form`
     justify-content: center;
     margin-top: 30px;
   }
-
+  label {
+    margin-left: 30px;
+  }
 `;
 
 export default SCEditProfileForm;

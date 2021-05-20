@@ -15,10 +15,16 @@ const SCRegisterItem = styled.div`
 
   .registers-wrapper {
     display: flex;
-    
 
     p {
-      padding-right: 2rem;
+      padding-right: 2.5rem;
+    }
+
+    .start{
+      color: #ffe66d;
+    }
+    .end {
+      color: #ff6b6b;
     }
   }
 

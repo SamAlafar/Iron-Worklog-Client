@@ -8,11 +8,11 @@ export default function RegisterItem({register, deleteRegister}) {
   return (
     <SCRegisterItem className='register-item'>
       <div className='registers-wrapper'>
-        <p>Date: {dayjs(register.date).format('DD/MM/YYYY')}</p>
-        <p>Start hour: {register.startHour}</p>
-        <p>End hour: {register.endHour}</p>
-        <p>Start break: {register.startBreak}</p>
-        <p>End break: {register.endBreak}</p>
+        <p><i class="fas fa-calendar-day"></i> {dayjs(register.date).format('DD/MM/YYYY')}</p>
+        <p><i class="fas fa-user-clock start"></i> : {register.startHour}</p>
+        <p><i class="fas fa-coffee start"></i> : {register.startBreak}</p>
+        <p><i class="fas fa-coffee end"></i> : {register.endBreak}</p>
+        <p><i class="fas fa-user-clock end"></i> : {register.endHour}</p>
       </div>
 
       <div className='action-wrapper'>

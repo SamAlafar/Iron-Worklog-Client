@@ -48,7 +48,7 @@ const SCDashboard = styled.div`
       }
     }
 
-    .register-wrapper {
+    .registers-wrapper {
       width: 65%;
     }
     .offdays-wrapper {

@@ -50,19 +50,21 @@ class RegisterDetailItem extends Component {
                 End Break: {this.state.fields.endBreak}
               </p>
             </div>
-            <div className='worked-hours'>
+{/*             <div className='worked-hours'>
               <p className='worked-style'>Worked Hours: 08:30</p>
               <p className='extra-style'>Extra Hours: 00:30</p>
-            </div>
+            </div> */}
           </div>
           <div className='standup-wrapper'>
             <div>
               <label>Prework Standup</label>
-              <p>{this.state.fields.morningStandup}</p>
+              <textarea disabled value={this.state.fields.morningStandup}>
+              </textarea>
             </div>
             <div>
               <label>Afterwork Standup</label>
-              <p>{this.state.fields.eveningStandup}</p>
+              <textarea disabled value={this.state.fields.eveningStandup}>
+              </textarea>
             </div>
           </div>
         </SCRegisterDetailItem>
